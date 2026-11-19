@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LMC Wireframes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1f2633;--mute:#6b7380;--faint:#9aa1ad;--line:#d7dbe2;--line2:#e6e9ee;
+  --fill:#f2f4f7;--fill2:#e8ebf0;--bg:#f6f7f9;--card:#fff;
+  --acc:#1e5bd8;--acc-soft:#e9f0fd;--pin:#f08a00;
+  --ok:#1f8a4c;--ok-s:#e3f4ea;--warn:#a86400;--warn-s:#fdf1dc;--bad:#c23a32;--bad-s:#fbe6e4;--info:#1e5bd8;--info-s:#e9f0fd;--grey-s:#eceef2;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.45}
+button{font:inherit}
+/* ---------- Page shell ---------- */
+.top{position:sticky;top:0;z-index:20;height:58px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 20px}
+.top .logo{width:30px;height:30px;border-radius:7px;background:var(--acc);color:#fff;font-weight:700;display:grid;place-items:center;font-size:13px}
+.top h1{font-size:15px;margin:0;font-weight:600}
+.top small{display:block;color:var(--mute);font-size:12px;font-weight:400}
+.top .meta{margin-left:auto;color:var(--mute);font-size:12px;text-align:right}
+.menu-btn{display:none;border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 11px;cursor:pointer}
+.shell{display:grid;grid-template-columns:280px 1fr;min-height:calc(100vh - 58px)}
+.nav{background:#fff;border-right:1px solid var(--line);padding:14px 10px 40px;position:sticky;top:58px;height:calc(100vh - 58px);overflow:auto}
+.nav h5{margin:16px 10px 6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:7px}
+.nav h5 i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.nav a{display:block;padding:6px 10px 6px 26px;border-radius:7px;color:var(--ink);text-decoration:none;font-size:13px}
+.nav a:hover{background:var(--fill)}
+.nav a.on{background:var(--acc-soft);color:var(--acc);font-weight:600}
+main{padding:26px 30px 60px;min-width:0}
+.screen{display:none;max-width:1320px}
+.screen.on{display:block}
+.shead{margin-bottom:18px}
+.shead h2{margin:8px 0 6px;font-size:22px}
+.shead p{margin:0;color:var(--mute);max-width:820px}
+.role{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;letter-spacing:.02em}
+.r-start{background:#eceef2;color:#3b4250}.r-admin{background:#e7eefc;color:#1e4fb8}.r-ga{background:#efe8fb;color:#6a3ab8}
+.r-con{background:#fdf0dc;color:#9a5a00}.r-sup{background:#e2f3ea;color:#1c7a45}.r-plb{background:#e2f2f6;color:#13708a}.r-app{background:#eceef2;color:#3b4250}
+.sgrid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:22px;align-items:start}
+.canvas{min-width:0;overflow-x:auto;padding-bottom:6px}
+.notes{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;position:sticky;top:78px}
+.notes h4{margin:0 0 10px;font-size:13px}
+.notes ol{list-style:none;padding:0;margin:0;counter-reset:n}
+.notes li{counter-increment:n;position:relative;padding-left:30px;margin-bottom:11px;font-size:13px;color:#3b4250}
+.notes li::before{content:counter(n);position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
+.notes .tip{margin-top:12px;padding:10px 12px;background:var(--fill);border-radius:8px;font-size:12px;color:var(--mute)}
+.pager{display:flex;justify-content:space-between;margin-top:26px;gap:10px}
+.pager button{border:1px solid var(--line);background:#fff;border-radius:9px;padding:10px 16px;cursor:pointer;text-align:left;max-width:48%}
+.pager button small{display:block;color:var(--mute);font-size:11px}
+.pager button:hover{border-color:var(--acc)}
+.pager .nx{margin-left:auto;text-align:right}
+/* pin */
+.pin{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;font-style:normal;vertical-align:middle;margin:0 4px;flex:none;box-shadow:0 0 0 3px rgba(240,138,0,.2)}
+/* ---------- Wireframe primitives ---------- */
+.wf{font-size:13px}
+.web{background:#fff;border:1px solid #c9ced7;border-radius:10px;overflow:hidden;min-width:860px;box-shadow:0 4px 18px rgba(20,30,50,.06)}
+.wbar{height:30px;background:var(--fill2);display:flex;align-items:center;gap:6px;padding:0 10px;border-bottom:1px solid var(--line)}
+.wbar b{width:9px;height:9px;border-radius:50%;background:#c3c8d1}
+.wbar span{margin-left:12px;background:#fff;border-radius:5px;font-size:11px;color:var(--faint);padding:2px 12px;flex:1;max-width:380px}
+.wapp{display:grid;grid-template-columns:186px 1fr;min-height:520px}
+.wside{background:#fafbfc;border-right:1px solid var(--line2);padding:14px 10px}
+.wside .brand{font-weight:700;font-size:13px;padding:2px 8px 14px;display:flex;gap:8px;align-items:center}
+.wside .brand i{width:22px;height:22px;border-radius:5px;background:var(--fill2);display:inline-block}
+.wside div.it{padding:7px 9px;border-radius:6px;font-size:12.5px;color:#4a5160;margin-bottom:2px;display:flex;gap:8px;align-items:center}
+.wside div.it::before{content:"";width:12px;height:12px;border-radius:3px;background:var(--fill2)}
+.wside div.it.on{background:var(--acc-soft);color:var(--acc);font-weight:600}
+.wside div.it.on::before{background:var(--acc);opacity:.5}
+.wmain{padding:0;min-width:0;background:#fff}
+.wtop{height:50px;border-bottom:1px solid var(--line2);display:flex;align-items:center;padding:0 18px;gap:12px}
+.wtop .ttl{font-weight:600;font-size:15px}
+.wtop .r{margin-left:auto;display:flex;align-items:center;gap:12px;color:var(--mute);font-size:12px}
+.av{width:28px;height:28px;border-radius:50%;background:var(--fill2);display:inline-block}
+.bell{width:16px;height:16px;border:2px solid #b2b8c3;border-radius:5px 5px 3px 3px;display:inline-block;position:relative}
+.bell::after{content:"";position:absolute;right:-5px;top:-5px;width:8px;height:8px;border-radius:50%;background:var(--bad)}
+.wbody{padding:18px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sp{flex:1}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g6{grid-template-columns:repeat(6,1fr)}
+.box{border:1px solid var(--line);border-radius:9px;padding:12px;background:#fff}
+.box h6{margin:0 0 8px;font-size:12px;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.kpi .n{font-size:22px;font-weight:700}
+.kpi .l{font-size:12px;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:7px;padding:7px 12px;font-size:12.5px;font-weight:500;color:var(--ink);white-space:nowrap}
+.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.d{border-color:#e7b5b1;color:var(--bad)}
+.btn.g{background:var(--ok);border-color:var(--ok);color:#fff}
+.btn.full{width:100%}
+.btn.sm{padding:4px 9px;font-size:11.5px}
+.in{border:1px solid var(--line);border-radius:7px;padding:7px 10px;font-size:12.5px;color:var(--faint);background:#fff;min-width:120px;display:inline-flex;align-items:center;justify-content:space-between;gap:8px}
+.in.dd::after{content:"▾";color:var(--faint);font-size:10px}
+.in.srch::before{content:"";width:10px;height:10px;border:2px solid #b8bec8;border-radius:50%;display:inline-block;margin-right:2px}
+.in.srch{justify-content:flex-start;min-width:200px}
+.in.val{color:var(--ink)}
+.in.blk{display:flex;width:100%}
+.lbl{font-size:11.5px;color:var(--mute);margin:10px 0 4px;font-weight:500}
+textarea.in,.ta{display:block;width:100%;min-height:70px}
+table.t{width:100%;border-collapse:collapse;font-size:12.5px}
+.t th{text-align:left;font-weight:600;color:var(--mute);font-size:11.5px;background:var(--fill);padding:8px 10px;border-bottom:1px solid var(--line)}
+.t td{padding:9px 10px;border-bottom:1px solid var(--line2);vertical-align:middle}
+.t td.m{color:var(--mute)}
+.cb{width:14px;height:14px;border:1.5px solid #b2b8c3;border-radius:3px;display:inline-block;vertical-align:middle}
+.cb.on{background:var(--acc);border-color:var(--acc);position:relative}
+.cb.on::after{content:"";position:absolute;left:3px;top:0;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.chip{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.c-ok{background:var(--ok-s);color:var(--ok)}.c-warn{background:var(--warn-s);color:var(--warn)}.c-bad{background:var(--bad-s);color:var(--bad)}.c-info{background:var(--info-s);color:var(--info)}.c-grey{background:var(--grey-s);color:#555d6b}.c-purple{background:#efe8fb;color:#6a3ab8}
+.bar{height:7px;border-radius:5px;background:var(--fill2);overflow:hidden;min-width:70px}
+.bar i{display:block;height:100%;background:var(--acc);border-radius:5px}
+.pgn{display:flex;justify-content:space-between;align-items:center;margin-top:10px;color:var(--mute);font-size:12px}
+.pgn span.pp{display:inline-flex;gap:4px}
+.pgn span.pp b{width:24px;height:24px;border:1px solid var(--line);border-radius:5px;display:grid;place-items:center;font-weight:500}
+.pgn span.pp b.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.ph{background:repeating-linear-gradient(45deg,#eef0f3,#eef0f3 6px,#e6e9ee 6px,#e6e9ee 12px);border:1px dashed #b9bfc9;border-radius:7px;display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:11px;text-align:center;padding:4px}
+.feed > div{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid var(--line2);font-size:12.5px}
+.feed > div:last-child{border:0}
+.feed i{width:8px;height:8px;border-radius:50%;margin-top:6px;flex:none}
+.feed small{display:block;color:var(--faint);font-size:11px}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.tabs span{padding:8px 12px;font-size:12.5px;color:var(--mute);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs span.on{color:var(--acc);border-color:var(--acc);font-weight:600}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:12.5px}
+.kv dt{color:var(--mute)}.kv dd{margin:0;font-weight:500}
+.chart{display:flex;align-items:flex-end;gap:10px;height:120px;padding:6px 4px 0;border-bottom:1px solid var(--line)}
+.chart div{flex:1;background:var(--acc-soft);border-top:3px solid var(--acc);border-radius:3px 3px 0 0;position:relative}
+.chart-l{display:flex;gap:10px;font-size:10.5px;color:var(--mute);padding:4px}
+.chart-l span{flex:1;text-align:center}
+.notice{border:1px dashed var(--acc);background:var(--acc-soft);color:#1b4597;border-radius:8px;padding:9px 12px;font-size:12px}
+.notice.warn{border-color:#e0a24a;background:var(--warn-s);color:#7a4a00}
+.notice.bad{border-color:#e4a09b;background:var(--bad-s);color:#8f2b25}
+/* modal overlay */
+.ovl{position:relative}
+.ovl::after{content:"";position:absolute;inset:0;background:rgba(25,32,45,.38);border-radius:0 0 10px 0}
+.modal{position:absolute;z-index:3;left:50%;top:60px;transform:translateX(-50%);width:420px;background:#fff;border-radius:11px;box-shadow:0 14px 40px rgba(0,0,0,.25);padding:18px}
+.modal h3{margin:0 0 4px;font-size:15px}
+.modal p{margin:0 0 6px;color:var(--mute);font-size:12px}
+/* step tracker */
+.steps{display:flex;gap:6px;margin:4px 0}
+.st{flex:1;border:1px solid var(--line);border-radius:8px;padding:8px;font-size:11.5px;background:#fff;min-width:0}
+.st i{font-style:normal;width:20px;height:20px;border-radius:50%;display:inline-grid;place-items:center;font-weight:700;font-size:11px;background:var(--fill2);color:var(--mute);margin-right:4px}
+.st span{font-weight:600}
+.st em{display:block;font-style:normal;margin-top:5px}
+.st.done{border-color:#b9e0c9;background:#f6fbf8}.st.done i{background:var(--ok);color:#fff}
+.st.cur{border-color:#f0cf96;background:#fffaf1}.st.cur i{background:var(--pin);color:#fff}
+.st.rw{border-color:#eab6b2;background:#fff8f7}.st.rw i{background:var(--bad);color:#fff}
+.st.lock{opacity:.7}
+.st.lock i::before{content:""}
+/* ---------- Phone ---------- */
+.phones{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
+.pcap{width:290px}
+.pcap > p{margin:10px 2px 0;font-size:12px;color:var(--mute);text-align:center}
+.phone{width:290px;height:600px;border:9px solid #262b35;border-radius:36px;background:#fff;position:relative;overflow:hidden;box-shadow:0 8px 24px rgba(20,30,50,.12);display:flex;flex-direction:column}
+.pst{height:26px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;font-size:10.5px;font-weight:600;flex:none}
+.pst::after{content:"";width:34px;height:9px;border:1.5px solid var(--ink);border-radius:3px}
+.phd{padding:6px 14px 10px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line2);flex:none}
+.phd .bk{font-size:20px;line-height:1;color:var(--acc)}
+.phd .tt{font-weight:600;font-size:14.5px}
+.phd .bell{margin-left:auto}
+.pbd{flex:1;overflow:hidden;padding:12px 13px;font-size:12px;position:relative}
+.ptab{height:52px;border-top:1px solid var(--line2);display:flex;flex:none}
+.ptab span{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;color:var(--faint)}
+.ptab span::before{content:"";width:16px;height:16px;border-radius:4px;background:var(--fill2)}
+.ptab span.on{color:var(--acc);font-weight:600}
+.ptab span.on::before{background:var(--acc);opacity:.55}
+.card{border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:9px;background:#fff}
+.card .h{display:flex;justify-content:space-between;align-items:flex-start;gap:6px}
+.card b{font-size:12.5px}
+.card small{color:var(--mute);display:block;font-size:11px;margin-top:2px}
+.grp{font-size:10.5px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;margin:10px 0 6px}
+.mini-steps{display:flex;gap:3px;margin-top:7px}
+.mini-steps i{flex:1;height:5px;border-radius:3px;background:var(--fill2)}
+.mini-steps i.d{background:var(--ok)}.mini-steps i.c{background:var(--pin)}.mini-steps i.r{background:var(--bad)}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:16px 16px 0 0;box-shadow:0 -10px 30px rgba(0,0,0,.2);padding:14px;z-index:3}
+.dim::after{content:"";position:absolute;inset:0;background:rgba(25,32,45,.4);z-index:2}
+.sheet .grab{width:38px;height:4px;border-radius:3px;background:var(--line);margin:0 auto 10px}
+.vlist .card{display:flex;gap:10px;align-items:center}
+.radio{width:16px;height:16px;border-radius:50%;border:2px solid #b2b8c3;flex:none}
+.radio.on{border-color:var(--acc);box-shadow:inset 0 0 0 3px #fff;background:var(--acc)}
+.otp{display:flex;gap:8px;justify-content:center;margin:12px 0}
+.otp b{width:36px;height:42px;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;font-size:16px}
+.vf{background:#2b303a;border-radius:10px;height:300px;position:relative;display:flex;align-items:center;justify-content:center;color:#cfd4dc;font-size:11px;text-align:center}
+.vf .frame{position:absolute;inset:80px 30px;border:2px dashed #f6b54a;border-radius:8px}
+.shutter{width:56px;height:56px;border-radius:50%;border:4px solid var(--ink);margin:16px auto 0;box-shadow:inset 0 0 0 4px #fff;background:var(--ink)}
+.gps{display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:8px;background:var(--ok-s);color:var(--ok);font-size:11.5px;font-weight:500}
+.gps::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(31,138,76,.2)}
+.ocr{border:1px solid var(--line);border-radius:8px;padding:7px 9px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center}
+.ocr small{display:block;color:var(--mute);font-size:10.5px}
+.ocr b{font-size:13px;letter-spacing:.04em}
+.tg{font-size:10px;color:var(--ok);font-weight:600}
+.lock{color:var(--faint)}
+.pbd{overflow-y:auto;scrollbar-width:thin}
+.ck{border-bottom:1px solid var(--line2);padding:7px 0}
+.ck p{margin:0 0 5px;font-size:11.5px;line-height:1.35}
+.ck p span{color:var(--mute);font-weight:600}
+.yn{display:flex;gap:4px;align-items:center}
+.yn b{border:1px solid var(--line);border-radius:6px;padding:2px 9px;font-size:10.5px;font-weight:500;flex:none}
+.yn b.y{background:var(--ok-s);border-color:#b9e0c9;color:var(--ok);font-weight:600}
+.yn b.n{background:var(--bad-s);border-color:#eab6b2;color:var(--bad);font-weight:600}
+.yn .in{flex:1;min-width:0;padding:3px 7px;font-size:10.5px}
+.sec{font-size:10.5px;font-weight:700;color:var(--acc);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 4px;border-top:1px solid var(--line2);padding-top:10px}
+.sec:first-child{border:0;padding-top:0;margin-top:2px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:0 8px}
+.f2 .in{min-width:0}
+.ocrtag{font-size:9.5px;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:4px;padding:1px 5px;margin-left:4px}
+.hl{background:#fff6d6;border:1px dashed #d9a800;border-radius:8px;padding:9px 10px;margin-top:10px}
+.hl .sec{color:#8a6500;border:0;margin-top:0;padding-top:0}
+tr.hlr td{background:#fff8dc}
+tr.qr td{background:#fdeeee}
+.mk{display:inline-block;font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:10px;white-space:nowrap}
+.mk.ok{background:var(--ok-s);color:var(--ok)}.mk.pd{background:#fff1bf;color:#7a5a00}.mk.fs{background:var(--info-s);color:var(--info)}.mk.no{background:#fff1bf;color:#7a5a00}.mk.q{background:var(--bad-s);color:var(--bad)}
+.op{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;gap:12px;margin-bottom:10px}
+.op .n{width:30px;height:26px;border-radius:13px;flex:none;display:grid;place-items:center;font-weight:700;font-size:12px;background:var(--fill2)}
+.op.q .n{background:var(--bad);color:#fff}.op.c .n{background:var(--pin);color:#fff}.op.p .n{background:var(--acc);color:#fff}
+.op h4{margin:0 0 4px;font-size:13.5px}.op p{margin:0;font-size:12.5px;color:#3b4250}
+.scrollhint{font-size:11px;color:var(--acc);text-align:center;margin-top:4px}
+/* flow diagram */
+.flow{display:grid;grid-template-columns:repeat(6,minmax(130px,1fr));gap:12px;align-items:stretch;min-width:900px}
+.fn{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 12px;position:relative}
+.fn .k{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.fn h4{margin:6px 0 6px;font-size:14px}
+.fn p{margin:0;font-size:12px;color:var(--mute)}
+.fn:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:42%;font-size:16px;color:var(--faint)}
+.lane{margin-top:14px;min-width:900px;border:1px dashed var(--line);border-radius:12px;padding:14px;background:#fff}
+.lane h4{margin:0 0 8px;font-size:13px}
+.roles{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.rc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;transition:.15s}
+.rc:hover{border-color:var(--acc);transform:translateY(-1px)}
+.rc h4{margin:8px 0 4px;font-size:14px}
+.rc p{margin:0;font-size:12.5px;color:var(--mute)}
+.rc .go{margin-top:10px;font-size:12px;color:var(--acc);font-weight:600}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.legend div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:12.5px;color:#3b4250}
+.legend .chip{margin-bottom:6px}
+.pipe{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:16px}
+.pipe .ar{color:var(--faint)}
+.intro{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:22px}
+.intro div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;font-size:13px;color:#3b4250}
+.intro b{display:block;margin-bottom:5px;color:var(--ink)}
+.sap{display:grid;grid-template-columns:1fr 150px 1fr;gap:16px;align-items:center;min-width:760px}
+.sys{background:#fff;border:2px solid var(--line);border-radius:14px;padding:18px;text-align:center}
+.sys h4{margin:6px 0 4px;font-size:16px}
+.sys p{margin:0;color:var(--mute);font-size:12px}
+.arrows{display:flex;flex-direction:column;gap:14px;font-size:11.5px;text-align:center;color:var(--mute)}
+.arrows div{border-top:2px solid var(--acc);position:relative;padding-top:4px}
+.arrows div.l{border-color:var(--ok)}
+.arrows div::after{content:"▶";position:absolute;right:-4px;top:-9px;color:var(--acc);font-size:10px}
+.arrows div.l::after{content:"◀";left:-4px;right:auto;color:var(--ok)}
+.sgrid:has(.web){grid-template-columns:1fr}
+.sgrid:has(.web) .notes{position:static}
+.sgrid:has(.web) .notes ol{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:4px 24px}
+@media (max-width:1100px){.sgrid{grid-template-columns:1fr}.notes{position:static}}
+@media (max-width:860px){
+  .shell{grid-template-columns:1fr}
+  .nav{position:fixed;left:0;top:58px;width:290px;z-index:30;transform:translateX(-100%);transition:.2s;box-shadow:6px 0 24px rgba(0,0,0,.12)}
+  .nav.open{transform:none}
+  .menu-btn{display:inline-block}
+  .top .meta{display:none}
+  main{padding:18px 16px 50px}
+}
+@media print{.nav,.top,.pager{display:none}.screen{display:block !important;page-break-after:always}.shell{display:block}}
+</style>
+</head>
+<body>
+<header class="top">
+  <button class="menu-btn" id="menuBtn">☰ Screens</button>
+  <div class="logo">LMC</div>
+  <h1>LMC Management System — Wireframes<small>Digital PNG Connection Management · Gujarat Energy Ltd</small></h1>
+  <div class="meta">Prepared by Yudiz Solutions Ltd<br>Version 3.0 · November 2026</div>
+</header>
+<div class="shell">
+<nav class="nav" id="nav"></nav>
+<main id="main">
+
+<!-- ======================= START HERE ======================= -->
+<section class="screen" id="welcome" data-group="Start Here" data-title="How to read this">
+  <div class="shead"><span class="role r-start">Start here</span><h2>Welcome — how to read these wireframes</h2>
+  <p>These are simple screen sketches of the LMC system. They show <b>what each person will see and do</b>, not the final colours or design. Use the menu on the left, or the Next / Previous buttons at the bottom of every page, to walk through the screens.</p></div>
+  <div class="intro">
+    <div><b><span class="pin">1</span> Orange numbers</b>Each screen has orange numbered markers. The panel on the right explains what each numbered part does.</div>
+    <div><b>Grey striped boxes</b>These are placeholders for photos, maps or charts. The real content will appear there.</div>
+    <div><b>Sample data</b>Names, numbers and addresses are dummy examples to make the screens easier to read.</div>
+    <div><b>Real form fields</b>Steps and form fields now follow the checklist sheet shared by Gujarat Energy Ltd. Points still under discussion are listed under "Pending discussion" and are not drawn as final.</div>
+    <div><b><span class="mk no">Yellow</span> highlights</b>Fields from the sheet that don't yet belong to any step form. Gujarat Energy Ltd to confirm where they are captured.</div>
+    <div><b>Final look &amp; feel</b>Colours, fonts and branding are decided in the UI/UX design stage, after these wireframes are agreed.</div>
+  </div>
+  <h3 style="font-size:15px;margin:0 0 10px">Who uses the system</h3>
+  <div class="roles">
+    <div class="rc" data-go="a-dash"><span class="role r-admin">Web panel</span><h4>Gujarat Energy Ltd Admin</h4><p>Sees everything across all GAs — Service Orders, contractors, progress, disputes and reports. Creates GA Admin accounts.</p><div class="go">View screens →</div></div>
+    <div class="rc" data-go="g-dash"><span class="role r-ga">Web panel</span><h4>GA Admin</h4><p>The GA engineer. Maps SAP work centers to contractors, and monitors everything in their own Geographical Area.</p><div class="go">View screens →</div></div>
+    <div class="rc" data-go="c-wc"><span class="role r-con">Web portal</span><h4>Contractor</h4><p>Signs in with the mobile number the GA Admin mapped to their work centers, picks GA and City, creates Supervisors and shares the houses among them.</p><div class="go">View screens →</div></div>
+    <div class="rc" data-go="s-home"><span class="role r-sup">Mobile app</span><h4>Supervisor</h4><p>Picks one of their work centers, does the feasibility check (Step 1), gives feasible houses to a Plumber Team, approves their work and handles disputes.</p><div class="go">View screens →</div></div>
+    <div class="rc" data-go="p-home"><span class="role r-plb">Mobile app</span><h4>Plumber Team</h4><p>Completes Steps 2–5 — Plumbing, Ground Connection, Commissioning and Conversion — with checklists, test reports, photos and location.</p><div class="go">View screens →</div></div>
+  </div>
+</section>
+
+<section class="screen" id="flow" data-group="Start Here" data-title="End-to-end flow">
+  <div class="shead"><span class="role r-start">Start here</span><h2>How a PNG connection moves through the system</h2>
+  <p>The journey of one house, from the Service (Job) Order in SAP to the final conversion.</p></div>
+  <div class="canvas">
+    <div class="flow">
+      <div class="fn"><div class="k" style="color:#3b4250">SAP</div><h4>Job Order created</h4><p>Created in SAP for a work center, and sent to LMC with GA, city and customer details.</p></div>
+      <div class="fn"><div class="k" style="color:#6a3ab8">GA Admin</div><h4>Work center mapped</h4><p>The GA Admin has linked the work center to a contractor's mobile number.</p></div>
+      <div class="fn"><div class="k" style="color:#9a5a00">Contractor</div><h4>Shares houses</h4><p>Picks GA and City, then gives each house to one Supervisor.</p></div>
+      <div class="fn"><div class="k" style="color:#1c7a45">Supervisor</div><h4>Step 1 · Feasibility</h4><p>Feasible → assigns a Plumber Team (or Self). Not feasible → house cancelled with a reason.</p></div>
+      <div class="fn"><div class="k" style="color:#13708a">Plumber Team</div><h4>Steps 2–5</h4><p>Plumbing, Ground Connection, Commissioning and Conversion — checklist, tests, photos and GPS.</p></div>
+      <div class="fn"><div class="k" style="color:#1c7a45">Supervisor</div><h4>Approves each step</h4><p>Approves the step, or sends it back for rework with a remark.</p></div>
+    </div>
+    <div class="lane"><h4>After every completed and approved step</h4>
+      <div class="row" style="font-size:12.5px;color:var(--mute)"><span class="chip c-info">Pushed to SAP</span> The data of that step is sent back to SAP straight away — not only at the end.</div></div>
+    <div class="lane"><h4>If SAP moves the Service Order to another contractor</h4>
+      <div class="row" style="font-size:12.5px;color:var(--mute)"><span class="chip c-purple">Contractor changed</span> LMC receives the update from SAP. Approved steps stay with each house; the new contractor's team completes the remaining stages.</div></div>
+    <div class="lane"><h4>When Step 5 is approved — or the house is cancelled</h4>
+      <div class="row"><span class="chip c-ok">Completed</span><span class="chip c-bad">Cancelled</span><span style="color:var(--mute);font-size:12.5px">→ status is updated for the Contractor and the Admin, and sent to SAP.</span></div></div>
+    <div class="lane"><h4>If there is a problem at site</h4>
+      <div class="row" style="font-size:12.5px;color:var(--mute)">Plumber Team raises a <span class="chip c-warn">Dispute</span> with a reason → Supervisor either marks it <span class="chip c-ok">Resolved</span> (work continues) or <span class="chip c-bad">Cancels</span> the connection → Contractor &amp; Admin are notified.</div></div>
+  </div>
+</section>
+
+<section class="screen" id="steps" data-group="Start Here" data-title="The five steps">
+  <div class="shead"><span class="role r-start">Start here</span><h2>The five steps of every connection</h2>
+  <p>Every house goes through the same five steps, in this order. A step opens only after the previous one is approved.</p></div>
+  <div class="canvas"><div class="box" style="min-width:860px;padding:0;overflow:hidden">
+    <table class="t"><tr><th style="width:190px">Step</th><th style="width:140px">Done by</th><th>What is filled in</th><th style="width:150px">Approved by</th></tr>
+      <tr><td><b>1 · First visit &amp; feasibility</b></td><td><span class="role r-sup">Supervisor</span></td><td>Feasible / Not feasible. If not feasible, a standard reason is mandatory and the house is closed as Cancelled. If feasible, the house is assigned to a Plumbing team or to the Supervisor (Self).</td><td><span class="mk pd">Pending discussion</span></td></tr>
+      <tr><td><b>2 · Plumbing</b></td><td><span class="role r-plb">Plumber Team</span></td><td>Job card: Meter Serial No. and Initial meter reading (read by OCR) · GI plumbing checklist (15 points) · Pipe Pneumatic Testing (PPT) report · HSE compliance</td><td>Supervisor</td></tr>
+      <tr><td><b>3 · Ground Connection (GC)</b></td><td><span class="mk pd">Pending discussion</span></td><td>GC checklist (3 points) · GC testing report · EF joint · GC joint no.</td><td>Supervisor</td></tr>
+      <tr><td><b>4 · Commissioning</b></td><td><span class="role r-plb">Plumber Team</span></td><td>Manometer testing (MMT) checklist (6 points) · rubber tube details (make, mfg. and expiry date) · MMT report</td><td>Supervisor</td></tr>
+      <tr><td><b>5 · Conversion</b></td><td><span class="role r-plb">Plumber Team</span></td><td>NG conversion checklist (2 points) · NG pressure at appliance / burner</td><td>Supervisor</td></tr>
+    </table></div>
+    <div class="intro" style="margin-top:14px;min-width:860px">
+      <div><b>On every step</b>Photo proof, GPS location (mandatory) and a comments box.</div>
+      <div><b>Checklists</b>Each inspection point is answered Yes / No with optional remarks. No automatic rules are applied.</div>
+      <div><b>After approval</b>The step's data is pushed to SAP, and the next step unlocks.</div>
+      <div><b>Pending discussion</b>Who approves Step 1 and who performs Step 3 are still being discussed.</div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="status" data-group="Start Here" data-title="Status of a house">
+  <div class="shead"><span class="role r-start">Start here</span><h2>Status of a house (lead)</h2>
+  <p>Every house carries one clear status. The same status is shown to everyone — Admin, GA Admin, Contractor, Supervisor and Plumber Team.</p></div>
+  <div class="pipe"><span class="chip c-grey">Not assigned</span><span class="ar">→</span><span class="chip c-grey">Feasibility pending</span><span class="ar">→</span><span class="chip c-info">Feasible</span><span class="ar">→</span><span class="chip c-info">Step 2…5 in progress</span><span class="ar">→</span><span class="chip c-warn">Awaiting approval</span><span class="ar">→</span><span class="chip c-ok">Completed</span></div>
+  <div class="legend">
+    <div><span class="chip c-grey">Not assigned</span><br>House has arrived from SAP (or moved to a new contractor); the Contractor has not yet given it to a Supervisor.</div>
+    <div><span class="chip c-grey">Feasibility pending</span><br>Supervisor has the house but Step 1 is not done. It cannot be given to a Plumber Team yet.</div>
+    <div><span class="chip c-info">Feasible</span><br>Step 1 done. Waiting for the Supervisor to assign a Plumber Team (or Self).</div>
+    <div><span class="chip c-info">Step 3 of 5</span><br>Plumber Team is working on this step.</div>
+    <div><span class="chip c-warn">Awaiting approval</span><br>A step has been submitted and is waiting for the Supervisor.</div>
+    <div><span class="chip c-bad">Rework</span><br>Supervisor sent the step back with a remark. Plumber Team must correct and resubmit.</div>
+    <div><span class="chip c-warn">Disputed</span><br>Plumber Team reported a problem at site. Waiting for the Supervisor's decision.</div>
+    <div><span class="chip c-ok">Completed</span><br>All five steps approved. Final status sent to SAP.</div>
+    <div><span class="chip c-bad">Cancelled</span><br>Marked Not feasible at Step 1, or cancelled by the Supervisor after a dispute — always with a reason.</div>
+    <div><span class="chip c-purple">House locked</span><br>House Lock status as received from SAP, shown inside the platform.</div>
+  </div>
+</section>
+
+<section class="screen" id="sap" data-group="Start Here" data-title="SAP connection">
+  <div class="shead"><span class="role r-start">Start here</span><h2>Connection with SAP (runs in the background)</h2>
+  <p>Users don't need to do anything for this. The LMC backend works as the middleware between SAP and the LMC web panels and app, so both sides always show the same information.</p></div>
+  <div class="canvas"><div class="sap">
+    <div class="sys"><span class="role r-start">Existing system</span><h4>SAP</h4><p>Job orders are created here for a work center. SAP sends work center details only — no contractor details.</p></div>
+    <div class="arrows"><div>Job orders (GA, city, work center)<br>Work center code &amp; description<br>Updates, incl. move to another contractor<br>House Lock status</div><div class="l">Data of each completed &amp; approved step<br>Not feasible + reason<br>Cancellation + reason<br>Completion</div></div>
+    <div class="sys" style="border-color:var(--acc)"><span class="role r-admin">New system</span><h4>LMC backend (middleware)</h4><p>Built by Yudiz. Holds the work center ↔ contractor mapping and feeds the web panels and the app.</p></div>
+  </div>
+  <div class="lane" style="min-width:760px"><h4>How a contractor is linked</h4><div style="font-size:12.5px;color:var(--mute)">The Work Center code is the unique key. The GA Admin adds a contractor's mobile number against one or more work centers in LMC. The Work Center Description is the contractor's name.</div></div>
+  <div class="lane" style="min-width:760px"><h4>Service Order moved to another contractor</h4><div style="font-size:12.5px;color:var(--mute)">SAP sends the update. LMC links the Service Order to the contractor mapped to its new work center. Approved steps stay with each house; the new contractor completes the remaining stages, and the move is logged.</div></div>
+  <div class="lane" style="min-width:760px"><h4>Field lists</h4><div class="row"><span class="btn sm" data-go="sap-in">SAP → LMC fields</span><span class="btn sm" data-go="sap-out">LMC → SAP fields</span></div></div>
+  </div>
+</section>
+
+<section class="screen" id="sap-in" data-group="Start Here" data-title="SAP → LMC fields">
+  <div class="shead"><span class="role r-start">Start here</span><h2>Data received from SAP</h2>
+  <p>The 20 fields that arrive with every Service (Job) Order, as finalised in the 5 Nov meeting, and where each is shown. No contractor details come from SAP.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="box" style="padding:0;overflow:hidden;min-width:620px">
+    <table class="t"><tr><th style="width:36px">#</th><th>Field from SAP <i class="pin">1</i></th><th>Shown in LMC</th></tr><tr><td class="m">1</td><td><b>PO number</b></td><td class="m">Service Order detail</td></tr><tr><td class="m">2</td><td><b>Job Order Number</b></td><td class="m">Everywhere — main reference</td></tr><tr><td class="m">3</td><td><b>SAP Start Date &amp; Time (order creation)</b></td><td class="m">Service Order detail</td></tr><tr><td class="m">4</td><td><b>Assign Date (set automatically when the order syncs into LMC)</b></td><td class="m">Service Order lists and detail</td></tr><tr><td class="m">5</td><td><b>Premise type</b></td><td class="m">House detail, Step 1</td></tr><tr><td class="m">6</td><td><b>Customer BP number</b></td><td class="m">House detail</td></tr><tr><td class="m">7</td><td><b>Application No.</b></td><td class="m">House detail</td></tr><tr><td class="m">8</td><td><b>Customer Name</b></td><td class="m">Lead lists, house detail</td></tr><tr><td class="m">9</td><td><b>House No.</b></td><td class="m">Lead lists, address</td></tr><tr><td class="m">10</td><td><b>Street 1</b></td><td class="m">Address</td></tr><tr><td class="m">11</td><td><b>Street 2</b></td><td class="m">Address</td></tr><tr><td class="m">12</td><td><b>Street</b></td><td class="m">Address</td></tr><tr><td class="m">13</td><td><b>City</b></td><td class="m">Filters, contractor City selection</td></tr><tr><td class="m">14</td><td><b>GA</b></td><td class="m">Filters, GA Admin scope, contractor GA selection</td></tr><tr><td class="m">15</td><td><b>Customer Contact No.</b></td><td class="m">House detail (tap to call)</td></tr><tr><td class="m">16</td><td><b>Geyser Point</b></td><td class="m">House detail, Step 1</td></tr><tr><td class="m">17</td><td><b>Extra Kitchen point</b></td><td class="m">House detail, Step 1</td></tr><tr><td class="m">18</td><td><b>Work Center (code)</b></td><td class="m">Mapping key, filters, Supervisor work center selection</td></tr><tr><td class="m">19</td><td><b>Work Center Description (contractor name)</b></td><td class="m">Work center lists, contractor name</td></tr><tr><td class="m">20</td><td><b>House Lock status</b></td><td class="m">House detail, Cancellations &amp; disputes</td></tr></table></div></div>
+  <aside class="notes"><h4>Notes</h4><ol>
+    <li>All fields are read-only in LMC — they change only in SAP, and updates flow in automatically.</li></ol>
+    <div class="tip">What "Premise type" means, and whether Notification number also comes from SAP, are under "Pending discussion".</div></aside></div>
+</section>
+
+<section class="screen" id="sap-out" data-group="Start Here" data-title="LMC → SAP fields">
+  <div class="shead"><span class="role r-start">Start here</span><h2>Data sent back to SAP</h2>
+  <p>LMC sends all 38 fields listed by Gujarat Energy Ltd. The source of 5 is confirmed. The step that captures the other 33 (highlighted) is still under discussion.</p></div>
+  <div class="row" style="margin-bottom:12px"><span class="mk ok">In step form · 3</span><span class="mk fs">From SAP data · 2</span><span class="mk pd">Pending discussion · 33</span></div>
+  <div class="canvas"><div class="box" style="padding:0;overflow:hidden;min-width:760px">
+    <table class="t"><tr><th style="width:36px">#</th><th>Field</th><th style="width:170px">Status</th><th>Captured in</th></tr><tr><td class="m">1</td><td><b>Meter Serial No</b></td><td><span class="mk ok">In step form</span></td><td class="m">Step 2 · Plumbing (OCR)</td></tr><tr><td class="m">2</td><td><b>Initial Meter reading</b></td><td><span class="mk ok">In step form</span></td><td class="m">Step 2 · Plumbing (OCR)</td></tr><tr><td class="m">3</td><td><b>Rubber Tube Expiry Date (MMYYYY)</b></td><td><span class="mk ok">In step form</span></td><td class="m">Step 4 · Commissioning (rubber tube details)</td></tr><tr><td class="m">4</td><td><b>Geyser Point</b></td><td><span class="mk fs">From SAP data</span></td><td class="m">Received from SAP</td></tr><tr><td class="m">5</td><td><b>Extra Kitchen Point</b></td><td><span class="mk fs">From SAP data</span></td><td class="m">Received from SAP</td></tr><tr class="hlr"><td class="m">6</td><td><b>Meter Category (Left/Right)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">7</td><td><b>Regulator Type (Low/High)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">8</td><td><b>Regulator Qty.</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">9</td><td><b>Location note</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">10</td><td><b>Installation Date (DD.MM.YYYY)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">11</td><td><b>Testing Date (DD.MM.YYYY)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">12</td><td><b>Conversion Date (DD.MM.YYYY)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">13</td><td><b>Isolation Valve Qty.</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">14</td><td><b>20MM PE Open Cut</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">15</td><td><b>20MM PE Manual Boring</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">16</td><td><b>1/2" GI Pipe (RCC/TAP to Main Isolation Valve)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">17</td><td><b>1/2" GI Pipe (Main Isolation Valve to Meter)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">18</td><td><b>1/2" GI Pipe (Metering to Kitchen)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">19</td><td><b>1/2" GI Pipe (Geyser Point)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">20</td><td><b>1/2" GI Pipe (Extra Kitchen Point)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">21</td><td><b>Gas Tap Qty.</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">22</td><td><b>Rubber Tube Qty.</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">23</td><td><b>User Status</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">24</td><td><b>User Status 1 (Set)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">25</td><td><b>User Status 2 (Set)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">26</td><td><b>User Status 3 (Set)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">27</td><td><b>User Status 4 (Set)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">28</td><td><b>User Status 1 (Reset)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">29</td><td><b>User Status 2 (Reset)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">30</td><td><b>User Status 3 (Reset)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">31</td><td><b>User Status 4 (Reset)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">32</td><td><b>SR (Functional Location)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">33</td><td><b>Apartment (A) / Bungalow (B)</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">34</td><td><b>Geyser Point W/O Gas Tap and RT</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">35</td><td><b>Extra Kitchen Point W/O Gas Tap and RT</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">36</td><td><b>Island Kitchen Connection</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">37</td><td><b>SS Tube Length - Island</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr><tr class="hlr"><td class="m">38</td><td><b>Rubber Tube 0.7 Mtr.</b></td><td><span class="mk pd">Pending discussion</span></td><td class="m"></td></tr></table></div></div>
+</section>
+
+<section class="screen" id="open" data-group="Start Here" data-title="Pending discussion">
+  <div class="shead"><span class="role r-start">Start here</span><h2>Pending discussion</h2>
+  <p>These points are still being discussed with Gujarat Energy Ltd, so they are not drawn as final in these wireframes. Numbers match Part B of the SRS.</p></div>
+  <div style="max-width:900px"><div class="op"><span class="n">B1</span><div><h4>Stage-wise Service Orders</h4><p>How SAP generates Service Orders in line with the stages (plumbing, commissioning, conversion), and how they link to one house.</p></div></div><div class="op"><span class="n">B2</span><div><h4>SAP → LMC push</h4><p>Whether SAP pushes all fields or a subset (IT &amp; ERP).</p></div></div><div class="op"><span class="n">B3</span><div><h4>SAP → LMC timing</h4><p>Real-time or file-based; automatic or user-driven (Business).</p></div></div><div class="op"><span class="n">B4</span><div><h4>Work center sync</h4><p>Sync frequency for work centers (IT &amp; ERP).</p></div></div><div class="op"><span class="n">B5</span><div><h4>User Status codes</h4><p>User Status 1–4 (Set / Reset) code list, trigger per step or event, and PNGRB mapping.</p></div></div><div class="op"><span class="n">B6</span><div><h4>Not feasible → SAP status</h4><p>Reason-wise status to send to SAP.</p></div></div><div class="op"><span class="n">B7</span><div><h4>LMC → SAP fields</h4><p>Which step captures each of the 33 highlighted fields, and their units.</p></div></div><div class="op"><span class="n">B8</span><div><h4>Premise type</h4><p>Meaning of Premise type, and whether it relates to Apartment (A) / Bungalow (B).</p></div></div><div class="op"><span class="n">B9</span><div><h4>Notification number</h4><p>Whether it comes from SAP.</p></div></div><div class="op"><span class="n">B10</span><div><h4>Step in progress during a contractor move</h4><p>Handling of a step submitted but not yet approved when the Service Order moves.</p></div></div><div class="op"><span class="n">B11</span><div><h4>Plumber Team accounts</h4><p>Who registers Plumber Teams and what a team record holds.</p></div></div><div class="op"><span class="n">B12</span><div><h4>Step 1 approval</h4><p>Whether Step 1 needs approval.</p></div></div><div class="op"><span class="n">B13</span><div><h4>Step 3 (GC)</h4><p>Who performs Ground Connection (marked "Self" in the sheet).</p></div></div><div class="op"><span class="n">B14</span><div><h4>Report list</h4><p>The predefined reports for Admin, GA Admin and Contractor.</p></div></div></div>
+</section>
+
+<!-- ======================= ADMIN ======================= -->
+<section class="screen" id="a-login" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="Login">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>Admin login</h2><p>Gujarat Energy Ltd's admin team signs in with email and password.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="none" data-url="lmc.gujaratenergy.in/admin"><div style="display:grid;grid-template-columns:1fr 1fr;min-height:460px">
+      <div class="ph" style="border-radius:0;border:0;font-size:12px">Gujarat Energy Ltd branding / illustration</div>
+      <div style="padding:60px 50px"><h3 style="margin:0 0 4px">Sign in to LMC Admin</h3><p style="margin:0 0 14px;color:var(--mute);font-size:12.5px">Use your official email ID</p>
+        <div class="lbl">Email ID <i class="pin">1</i></div><div class="in blk">name@gujaratenergy.in</div>
+        <div class="lbl">Password</div><div class="in blk">••••••••</div>
+        <div style="text-align:right;margin:8px 0 14px;font-size:12px;color:var(--acc)">Forgot password? <i class="pin">2</i></div>
+        <span class="btn p full">Sign in</span>
+        <div class="notice" style="margin-top:16px">Session ends automatically after a period of no activity. <i class="pin">3</i></div>
+      </div></div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Email ID and password login — only for Gujarat Energy Ltd admin users.</li>
+    <li>Forgot password sends a reset link to the registered email, where a new password can be set.</li>
+    <li>Secure session handling — users are signed out after inactivity.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="a-dash" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="Dashboard">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>Admin dashboard</h2><p>The first screen after login — a one-glance picture of all LMC work across every GA.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="admin" data-active="Dashboard" data-title="Dashboard"><div class="wbody">
+      <div class="row" style="margin-bottom:14px"><i class="pin">1</i><span class="in dd">All GAs</span><span class="in dd">All cities</span><span class="in dd">All work centers</span><span class="in dd">All contractors</span><span class="in dd">01 Oct – 21 Oct 2026</span><span class="sp"></span><span style="font-size:11px;color:var(--faint)">Last synced with SAP: 2 min ago</span></div>
+      <div class="grid g3" style="margin-bottom:12px"><i class="pin" style="position:absolute;margin:-8px 0 0 -10px">2</i>
+        <div class="box kpi"><div class="l">Total Service Orders</div><div class="n">342</div></div>
+        <div class="box kpi"><div class="l">Active Service Orders</div><div class="n">118</div></div>
+        <div class="box kpi"><div class="l">Completed Service Orders</div><div class="n">224</div></div></div>
+      <div class="grid g3" style="margin-bottom:14px">
+        <div class="box kpi"><div class="l">Contractors active <i class="pin">3</i></div><div class="n">26</div></div>
+        <div class="box kpi"><div class="l">Supervisors active</div><div class="n">74</div></div>
+        <div class="box kpi"><div class="l">Plumber teams active</div><div class="n">190</div></div></div>
+      <div class="grid" style="grid-template-columns:1.3fr 1fr">
+        <div class="box"><h6>Connections completed by GA <i class="pin">4</i></h6>
+          <div class="chart"><div style="height:85%"></div><div style="height:62%"></div><div style="height:48%"></div><div style="height:70%"></div><div style="height:35%"></div></div>
+          <div class="chart-l"><span>Ahmedabad</span><span>Vadodara</span><span>Rajkot</span><span>Surat</span><span>Bhavnagar</span></div></div>
+        <div class="box"><h6>Recent activity <i class="pin">5</i></h6><div class="feed">
+          <div><i style="background:#6a3ab8"></i><div><b>Service Order moved</b> — SO-4500131 · Sector 26<small>Patel Pipeline Works → Krishna Utility Services (from SAP) · 5 min ago</small></div></div>
+          <div><i style="background:var(--bad)"></i><div><b>House cancelled</b> — B-12, Sundaram Society<small>Reason: Customer not interested · Shree Gas Infra · 10 min ago</small></div></div>
+          <div><i style="background:var(--pin)"></i><div><b>Dispute raised</b> — A-304, Shivalay Residency<small>House locked on 3 visits · Patel Pipeline Works · 32 min ago</small></div></div>
+          <div><i style="background:var(--ok)"></i><div><b>Completed</b> — 18 houses in SO-4500127<small>Om Sai Contractors · 1 hr ago</small></div></div>
+          <div><i style="background:var(--acc)"></i><div><b>New Service Order synced</b> — SO-4500151 · Gota<small>From SAP · 2 hr ago</small></div></div></div></div></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Quick filters — narrow the whole dashboard by GA, city, work center, contractor and date range.</li>
+    <li>Service Order totals: total, active and completed.</li>
+    <li>How many contractors, supervisors and plumber teams are active in the system.</li>
+    <li>Progress chart (example). Final charts will be agreed during discovery.</li>
+    <li>Recent activity feed — cancellations, disputes and Service Orders moved to another contractor are highlighted.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="a-so" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="Service Orders">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>Service Order list</h2><p>All Service Orders received from SAP, across every GA.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="admin" data-active="Service Orders" data-title="Service Orders"><div class="wbody">
+      <div class="notice" style="margin-bottom:12px"><i class="pin">1</i> Service Orders are created in SAP for a work center and appear here automatically. The contractor comes from the GA Admin's work center mapping. There is no "Create" button in this system.</div>
+      <div class="row" style="margin-bottom:12px"><span class="in srch">Search by SO name or number</span><i class="pin">2</i><span class="in dd">GA</span><span class="in dd">City</span><span class="in dd">Contractor</span><span class="in dd">Status</span><span class="sp"></span><span class="in dd">Sort: Newest first</span></div>
+      <table class="t"><tr><th>GA <i class="pin">3</i></th><th>City</th><th>Service Order</th><th>Contractor</th><th>Houses</th><th>Progress</th><th>Status</th></tr>
+        <tr><td>Ahmedabad</td><td>Ahmedabad</td><td><b>SO-4500127 · Bopal Phase 2</b></td><td>Shree Gas Infra</td><td>240</td><td><div class="bar"><i style="width:72%"></i></div><small style="color:var(--mute)">172 / 240</small></td><td><span class="chip c-info">Active</span></td></tr>
+        <tr><td>Ahmedabad</td><td>Gandhinagar</td><td><b>SO-4500131 · Sector 26</b></td><td>Patel Pipeline Works</td><td>180</td><td><div class="bar"><i style="width:40%"></i></div><small style="color:var(--mute)">72 / 180</small></td><td><span class="chip c-info">Active</span></td></tr>
+        <tr><td>Vadodara</td><td>Vadodara</td><td><b>SO-4500098 · Gotri Road</b></td><td>Om Sai Contractors</td><td>95</td><td><div class="bar"><i style="width:100%;background:var(--ok)"></i></div><small style="color:var(--mute)">95 / 95</small></td><td><span class="chip c-ok">Completed</span></td></tr>
+        <tr><td>Rajkot</td><td>Rajkot</td><td><b>SO-4500142 · Kalawad Road</b></td><td>Krishna Utility Services</td><td>310</td><td><div class="bar"><i style="width:12%"></i></div><small style="color:var(--mute)">37 / 310</small></td><td><span class="chip c-info">Active</span></td></tr>
+        <tr><td>Ahmedabad</td><td>Ahmedabad</td><td><b>SO-4500151 · Gota</b></td><td>Shree Gas Infra</td><td>130</td><td><div class="bar"><i style="width:0%"></i></div><small style="color:var(--mute)">0 / 130</small></td><td><span class="chip c-grey">New</span></td></tr></table>
+      <div class="pgn"><span>Showing 1–5 of 342 <i class="pin">4</i></span><span class="pp"><b>‹</b><b class="on">1</b><b>2</b><b>3</b><b>…</b><b>69</b><b>›</b></span></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Service Orders come only from SAP. This removes double entry.</li>
+    <li>Search, filter and sort — built to handle hundreds of Service Orders a month.</li>
+    <li>Each Service Order is identified by GA + City + Job Order number.</li>
+    <li>Pages keep the list fast even with large volumes. Click any row to open its details.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="a-sodetail" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="Service Order details">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>Service Order details</h2><p>Opening a Service Order shows its SAP details, the current contractor, any change of contractor, and every household lead inside it.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="admin" data-active="Service Orders" data-title="‹ SO-4500131 · Sector 26"><div class="wbody">
+      <div class="notice" style="margin-bottom:12px;border-color:#b79be6;background:#f5f0fd;color:#4b2a8a"><i class="pin">3</i> Moved by SAP on 19 Nov 2026 from Patel Pipeline Works to Krishna Utility Services. Approved steps are kept; the new contractor completes the remaining stages.</div>
+      <div class="grid" style="grid-template-columns:1.4fr 1fr;margin-bottom:14px">
+        <div class="box"><h6>Service Order information <i class="pin">1</i></h6><dl class="kv"><dt>GA</dt><dd>Ahmedabad</dd><dt>City</dt><dd>Gandhinagar</dd><dt>Work center</dt><dd>WC-GNR-04 · Krishna Utility Services</dd><dt>PO number</dt><dd>4100023817</dd><dt>SAP start date &amp; time</dt><dd>14 Oct 2026, 10:12</dd><dt>Assign date</dt><dd>14 Oct 2026, 10:15</dd><dt>Current contractor</dt><dd>Krishna Utility Services · 90XXXXXX78</dd></dl></div>
+        <div><div class="box" style="margin-bottom:10px"><h6>Progress <i class="pin">2</i></h6><div class="grid g2" style="gap:8px">
+          <div class="kpi"><div class="n">180</div><div class="l">Total houses</div></div><div class="kpi"><div class="n" style="color:var(--ok)">72</div><div class="l">Completed</div></div>
+          <div class="kpi"><div class="n" style="color:var(--acc)">101</div><div class="l">In progress</div></div><div class="kpi"><div class="n" style="color:var(--bad)">7</div><div class="l">Cancelled / disputed</div></div></div></div>
+          <div class="box"><h6>Contractor history <i class="pin">4</i></h6><div class="feed">
+            <div><i style="background:#6a3ab8"></i><div><b>Krishna Utility Services</b><small>From 19 Nov 2026 · WC-GNR-04</small></div></div>
+            <div><i style="background:var(--faint)"></i><div><b>Patel Pipeline Works</b><small>14 Oct – 19 Nov 2026 · WC-GNR-01</small></div></div></div></div></div></div>
+      <div class="row" style="margin-bottom:10px"><b style="font-size:13px">Household leads <i class="pin">5</i></b><span class="sp"></span><span class="in srch">Search customer / house</span><span class="in dd">Status</span><span class="in dd">Supervisor</span></div>
+      <table class="t"><tr><th>Customer</th><th>House</th><th>Supervisor</th><th>Plumber team</th><th>Step progress</th><th>Status</th></tr>
+        <tr><td><b>Nita Mehta</b></td><td class="m">B-102, Sector 26</td><td>—</td><td>—</td><td><div class="mini-steps"><i class="d"></i><i class="d"></i><i></i><i></i><i></i></div></td><td><span class="chip c-grey">Not assigned</span></td></tr>
+        <tr><td><b>Jignesh Rathod</b></td><td class="m">C-14, Sector 26</td><td>Ajay Solanki</td><td>Team K1</td><td><div class="mini-steps"><i class="d"></i><i class="d"></i><i class="d"></i><i class="c"></i><i></i></div></td><td><span class="chip c-warn">Awaiting approval</span></td></tr>
+        <tr><td><b>Pooja Shah</b></td><td class="m">A-7, Sector 26</td><td>Ajay Solanki</td><td>Team K2</td><td><div class="mini-steps"><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i></div></td><td><span class="chip c-ok">Completed</span></td></tr>
+        <tr><td><b>Manoj Vora</b></td><td class="m">D-3, Sector 26</td><td>—</td><td>—</td><td><div class="mini-steps"><i></i><i></i><i></i><i></i><i></i></div></td><td><span class="chip c-grey">Not assigned</span></td></tr></table>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Service Order details as received from SAP, plus the contractor currently mapped to its work center.</li>
+    <li>Live progress counts for this Service Order.</li>
+    <li>When SAP moves a Service Order to another contractor, a banner explains it.</li>
+    <li>Contractor history — every contractor this Service Order has had, with dates.</li>
+    <li>Houses moved to the new contractor show as "Not assigned" until their new Supervisor is set. Approved steps (green bars) are kept.</li></ol>
+    <div class="tip">How a step that was submitted but not yet approved is handled during a move is under "Pending discussion".</div></aside></div>
+</section>
+
+<section class="screen" id="a-lead" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="House / lead details">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>House (lead) details</h2><p>Everything about one house: SAP data, the five steps, each submission with checklist, test report, photos and location, and a full history of who did what.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="admin" data-active="Service Orders" data-title="‹ Hetal Shah · A-304, Shivalay Residency"><div class="wbody">
+      <div class="row" style="margin-bottom:12px"><i class="pin">1</i><dl class="kv" style="grid-template-columns:auto 1fr auto 1fr auto 1fr"><dt>Customer</dt><dd>Hetal Shah · BP 1000234567</dd><dt>Service Order</dt><dd>SO-4500127</dd><dt>Supervisor</dt><dd>Rakesh Parmar</dd><dt>Address</dt><dd>A-304, Shivalay Residency, Bopal</dd><dt>Contractor</dt><dd>Shree Gas Infra</dd><dt>Plumber team</dt><dd>Team A</dd></dl><span class="sp"></span><span class="chip c-warn">Awaiting approval</span></div>
+      <div class="steps" style="margin-bottom:14px"><i class="pin">2</i>
+        <div class="st done"><i>1</i><span>Feasibility</span><em style="color:var(--ok)">Feasible · Supervisor</em></div>
+        <div class="st done"><i>2</i><span>Plumbing</span><em style="color:var(--ok)">Approved · sent to SAP</em></div>
+        <div class="st cur"><i>3</i><span>Ground Connection</span><em style="color:var(--warn)">Awaiting approval</em></div>
+        <div class="st lock"><i>4</i><span>Commissioning</span><em class="lock">Locked</em></div>
+        <div class="st lock"><i>5</i><span>Conversion</span><em class="lock">Locked</em></div></div>
+      <div class="tabs"><span class="on">Step submissions</span><span>SAP data <i class="pin">5</i></span><span>Activity log</span><span>Photos</span></div>
+      <div class="grid" style="grid-template-columns:1.2fr 1fr">
+        <div class="box"><h6>Step 3 · Ground Connection · Team A · 05 Nov, 11:42 AM <i class="pin">3</i></h6>
+          <dl class="kv"><dt>GC checklist</dt><dd>3 of 3 points answered — all Yes</dd><dt>Testing medium</dt><dd>Air</dd><dt>Initial / Final</dt><dd>1.0 / 1.0 kg/cm² · 15 min</dd><dt>Test result</dt><dd>OK</dd><dt>EF Joint</dt><dd>Done</dd><dt>GC Joint No.</dt><dd>GC-0118</dd><dt>Comments</dt><dd>PE laid up to transition fitting</dd></dl>
+          <div class="lbl">Photo proof</div><div class="grid g3" style="gap:6px"><div class="ph" style="height:56px">Photo 1</div><div class="ph" style="height:56px">Photo 2</div><div class="ph" style="height:56px">Photo 3</div></div></div>
+        <div><div class="box" style="margin-bottom:10px"><h6>Location captured <i class="pin">4</i></h6><div class="ph" style="height:76px">Map · 23.0225, 72.5714</div></div>
+          <div class="box"><h6>Meter (from Step 2, OCR)</h6><dl class="kv"><dt>Meter Serial No</dt><dd>23A884512</dd><dt>Initial reading</dt><dd>000182</dd></dl></div></div></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Customer, house and assignment details, with the current status.</li>
+    <li>The five-step tracker. A step stays locked until the step before it is approved. Each approved step shows that its data went to SAP.</li>
+    <li>Each step's submitted checklist, test report and photo proof. Older submissions (including rework) remain visible.</li>
+    <li>GPS location captured at submission, and the meter numbers read by OCR at Step 2.</li>
+    <li>"SAP data" tab — every field received from SAP for this house (BP no., application no., plan type, geyser / extra kitchen points and so on).</li></ol></aside></div>
+</section>
+
+<section class="screen" id="a-con" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="Contractors">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>Contractors</h2><p>Directory of all contractors. A contractor exists in LMC once a GA Admin maps their mobile number to work centers.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="admin" data-active="Contractors" data-title="Contractors"><div class="wbody">
+      <div class="row" style="margin-bottom:12px"><span class="in srch">Search contractor / mobile</span><span class="in dd">GA</span><span class="in dd">City</span><i class="pin">1</i><span class="sp"></span><span style="font-size:11px;color:var(--faint)">From GA Admin mappings</span></div>
+      <div class="grid" style="grid-template-columns:1.4fr 1fr">
+        <table class="t"><tr><th>Contractor</th><th>Mobile (ID)</th><th>Work centers</th><th>Houses done</th></tr>
+          <tr style="background:var(--acc-soft)"><td><b>Shree Gas Infra</b></td><td class="m">98XXXXXX10</td><td>3</td><td>412 / 690</td></tr>
+          <tr><td><b>Patel Pipeline Works</b></td><td class="m">97XXXXXX44</td><td>2</td><td>188 / 420</td></tr>
+          <tr><td><b>Om Sai Contractors</b></td><td class="m">99XXXXXX03</td><td>1</td><td>301 / 301</td></tr>
+          <tr><td><b>Krishna Utility Services</b></td><td class="m">90XXXXXX78</td><td>2</td><td>109 / 490</td></tr></table>
+        <div class="box"><h6>Contractor profile <i class="pin">2</i></h6><b style="font-size:14px">Shree Gas Infra</b><dl class="kv" style="margin:8px 0 12px"><dt>Mobile (ID)</dt><dd>98XXXXXX10</dd><dt>GA</dt><dd>Ahmedabad</dd><dt>Mapped by</dt><dd>Amit Trivedi (GA Admin)</dd><dt>Supervisors</dt><dd>8</dd></dl>
+          <h6>Mapped work centers</h6>
+          <div style="font-size:12px"><div class="row" style="margin-bottom:6px">WC-AHD-03 · Ahmedabad<span class="sp"></span><span class="chip c-info">4 SOs</span></div>
+          <div class="row" style="margin-bottom:6px">WC-AHD-05 · Ahmedabad<span class="sp"></span><span class="chip c-info">2 SOs</span></div>
+          <div class="row">WC-GNR-02 · Gandhinagar<span class="sp"></span><span class="chip c-grey">0 SOs</span></div></div></div></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Search by name or mobile number; filter by GA and city. Contractors are not entered here — they come from the GA Admins' work center mappings.</li>
+    <li>The contractor profile shows the mobile number (their identifier), mapped work centers, Service Orders and progress.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="a-wc" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="Work centers">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>Work centers (view only)</h2><p>All work centers received from SAP, across every GA, with the contractor each one is mapped to. Mapping itself is done by the GA Admins.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="admin" data-active="Work Centers" data-title="Work Centers"><div class="wbody">
+      <div class="row" style="margin-bottom:12px"><span class="in srch">Search work center code</span><span class="in dd">GA</span><span class="in dd">City</span><span class="in dd">Mapping: All</span><i class="pin">1</i></div>
+      <table class="t"><tr><th>Work center code</th><th>Description (contractor name)</th><th>GA</th><th>City</th><th>Mapped mobile <i class="pin">2</i></th><th>Service Orders</th></tr>
+        <tr><td><b>WC-AHD-03</b></td><td>Shree Gas Infra</td><td>Ahmedabad</td><td>Ahmedabad</td><td>98XXXXXX10</td><td>4</td></tr>
+        <tr><td><b>WC-AHD-05</b></td><td>Shree Gas Infra</td><td>Ahmedabad</td><td>Ahmedabad</td><td>98XXXXXX10</td><td>2</td></tr>
+        <tr><td><b>WC-GNR-04</b></td><td>Krishna Utility Services</td><td>Ahmedabad</td><td>Gandhinagar</td><td>90XXXXXX78</td><td>1</td></tr>
+        <tr><td><b>WC-VAD-02</b></td><td>Om Sai Contractors</td><td>Vadodara</td><td>Vadodara</td><td>99XXXXXX03</td><td>3</td></tr>
+        <tr style="background:#fff8dc"><td><b>WC-RJK-07</b></td><td>Saurashtra Gas Works</td><td>Rajkot</td><td>Rajkot</td><td><span class="chip c-warn">Not mapped</span></td><td>2</td></tr></table>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Search by code; filter by GA, city and mapping state.</li>
+    <li>The contractor mobile number each work center is mapped to. Work centers that receive Service Orders before they are mapped are flagged "Not mapped".</li></ol></aside></div>
+</section>
+
+<section class="screen" id="a-ga" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="GA Admins">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>GA Admin accounts</h2><p>The master Admin creates accounts for each GA engineer (GA Admin) of a Geographical Area.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="admin" data-active="GA Admins" data-title="GA Admins"><div class="wbody ovl" style="min-height:470px">
+      <div class="row" style="margin-bottom:12px"><span class="in srch">Search GA admin</span><span class="sp"></span><span class="btn p">+ Add GA Admin</span><i class="pin">1</i></div>
+      <table class="t"><tr><th>Name</th><th>Mobile</th><th>Geographical Area</th><th>Status</th><th></th></tr>
+        <tr><td><b>Amit Trivedi</b></td><td class="m">98XXXXXX55</td><td>Ahmedabad</td><td><span class="chip c-ok">Active</span></td><td class="m">Edit</td></tr>
+        <tr><td><b>Neha Bhatt</b></td><td class="m">97XXXXXX12</td><td>Vadodara</td><td><span class="chip c-ok">Active</span></td><td class="m">Edit</td></tr>
+        <tr><td><b>Harshad Jani</b></td><td class="m">99XXXXXX67</td><td>Rajkot</td><td><span class="chip c-grey">Inactive</span></td><td class="m">Edit</td></tr></table>
+      <div class="modal"><h3>Add GA Admin</h3><p>They will sign in with this mobile number and an OTP.</p>
+        <div class="lbl">Full name</div><div class="in blk">Enter name</div>
+        <div class="lbl">Mobile number <i class="pin">2</i></div><div class="in blk">+91</div>
+        <div class="lbl">Email (optional)</div><div class="in blk">name@gujaratenergy.in</div>
+        <div class="lbl">Geographical Area <i class="pin">3</i></div><div class="in dd blk val">Surat</div>
+        <div class="row" style="margin-top:16px;justify-content:flex-end"><span class="btn">Cancel</span><span class="btn p">Create account</span></div></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Only the master Admin can add GA Admins.</li>
+    <li>GA Admins sign in to their own panel with mobile number + OTP.</li>
+    <li>Each GA Admin is linked to one GA and can see only that GA's Service Orders — never another GA's data.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="a-logs" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="Monitoring & logs">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>Monitoring, logs &amp; audit trail</h2><p>A time-stamped record of every action in the system — who did what, and when.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="admin" data-active="Monitoring & Logs" data-title="Monitoring & Logs"><div class="wbody">
+      <div class="grid g4" style="margin-bottom:12px"><i class="pin" style="position:absolute;margin:-8px 0 0 -10px">1</i>
+        <div class="box kpi"><div class="l">Awaiting approval</div><div class="n" style="color:var(--warn)">63</div></div><div class="box kpi"><div class="l">Sent for rework</div><div class="n" style="color:var(--bad)">21</div></div>
+        <div class="box kpi"><div class="l">Open disputes</div><div class="n" style="color:var(--warn)">9</div></div><div class="box kpi"><div class="l">Completed today</div><div class="n" style="color:var(--ok)">48</div></div></div>
+      <div class="row" style="margin-bottom:10px"><span class="in dd">Role</span><span class="in dd">Action</span><span class="in dd">Work center</span><span class="in dd">Date range</span><i class="pin">2</i><span class="sp"></span><span class="in srch">Search house / person</span></div>
+      <table class="t"><tr><th>Date &amp; time</th><th>Person</th><th>Role</th><th>Action <i class="pin">3</i></th><th>House / lead</th></tr>
+        <tr><td class="m">21 Oct, 11:58</td><td>Rakesh Parmar</td><td><span class="chip c-ok">Supervisor</span></td><td>Approved Step 2</td><td>A-304, Shivalay Residency</td></tr>
+        <tr><td class="m">21 Oct, 11:42</td><td>Team A</td><td><span class="chip c-info">Plumber</span></td><td>Submitted Step 3 (3 photos, GPS, OCR)</td><td>A-304, Shivalay Residency</td></tr>
+        <tr><td class="m">21 Oct, 10:15</td><td>Nilesh Chauhan</td><td><span class="chip c-ok">Supervisor</span></td><td>Sent Step 2 back — "Photo of joint not clear"</td><td>B-11, Ratnadeep Flats</td></tr>
+        <tr><td class="m">21 Oct, 09:45</td><td>Amit Trivedi</td><td><span class="chip c-purple">GA Admin</span></td><td>Mapped WC-GNR-02 to 98XXXXXX10 (Shree Gas Infra)</td><td>WC-GNR-02</td></tr>
+        <tr><td class="m">21 Oct, 09:40</td><td>Shree Gas Infra</td><td><span class="chip c-warn">Contractor</span></td><td>Reassigned 12 leads: Vipul → Rakesh</td><td>SO-4500127</td></tr>
+        <tr><td class="m">21 Oct, 09:02</td><td>System</td><td><span class="chip c-grey">SAP sync</span></td><td>Received SO-4500151 (130 houses)</td><td>SO-4500151</td></tr></table>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Real-time status counts across all Service Orders and houses.</li>
+    <li>Filter the log by role, action, work center and date range.</li>
+    <li>Every submission, approval, rework, dispute, cancellation, reassignment, work center mapping and contractor move is recorded and cannot be edited.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="a-disp" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="Cancellations & disputes">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>Cancellations &amp; disputes</h2><p>One place to see every house that was cancelled, every dispute raised at site, and House Lock statuses from SAP.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="admin" data-active="Cancellations & Disputes" data-title="Cancellations & Disputes"><div class="wbody">
+      <div class="tabs"><span class="on">Cancellations (14)</span><span>Disputes (9) <i class="pin">2</i></span><span>House Lock (31) <i class="pin">3</i></span></div>
+      <div class="notice bad" style="margin-bottom:12px"><i class="pin">1</i> New: B-12, Sundaram Society was cancelled 10 min ago by Supervisor Nilesh Chauhan.</div>
+      <table class="t"><tr><th>House</th><th>Service Order</th><th>Contractor</th><th>Cancelled by</th><th>Stage</th><th>Reason</th><th>Date</th></tr>
+        <tr><td><b>B-12, Sundaram Society</b></td><td>SO-4500127</td><td>Shree Gas Infra</td><td>Nilesh Chauhan</td><td><span class="chip c-grey">Step 1 · Not feasible</span></td><td class="m">Customer not interested</td><td class="m">21 Oct</td></tr>
+        <tr><td><b>9, Prabhu Park</b></td><td>SO-4500131</td><td>Patel Pipeline Works</td><td>Vipul Thakor</td><td><span class="chip c-grey">Step 1 · Not feasible</span></td><td class="m">No gas line access in building</td><td class="m">20 Oct</td></tr>
+        <tr><td><b>F-401, Sky Heights</b></td><td>SO-4500142</td><td>Krishna Utility Services</td><td>Rakesh Parmar</td><td><span class="chip c-warn">After dispute</span></td><td class="m">Society NOC not given</td><td class="m">19 Oct</td></tr></table>
+      <div class="lbl" style="margin-top:16px">Disputes tab preview</div>
+      <table class="t"><tr><th>House</th><th>Raised by</th><th>Reason</th><th>Resolution</th></tr>
+        <tr><td><b>A-304, Shivalay Residency</b></td><td>Team A</td><td class="m">House locked on 3 visits</td><td><span class="chip c-warn">Open</span></td></tr>
+        <tr><td><b>14, Nandanvan Society</b></td><td>Team C</td><td class="m">Customer wants different meter location</td><td><span class="chip c-ok">Resolved</span></td></tr></table>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>The Admin is notified whenever a house is cancelled — either marked Not feasible at Step 1 (standard reason) or cancelled after a dispute.</li>
+    <li>All disputes and their resolution status (open, resolved or cancelled) across all Service Orders.</li>
+    <li>House Lock statuses synced from SAP, shown inside the platform.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="a-rep" data-group="Admin Panel (Gujarat Energy Ltd)" data-title="Reports & export">
+  <div class="shead"><span class="role r-admin">Admin Panel · Web</span><h2>Reports &amp; export</h2><p>Ready-made work-done and progress reports, downloadable to Excel or PDF.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="admin" data-active="Reports" data-title="Reports"><div class="wbody">
+      <div class="row" style="margin-bottom:14px"><span style="font-size:12px;color:var(--mute)">Report level <i class="pin">1</i></span><span class="btn sm p">Service Order</span><span class="btn sm">Contractor</span><span class="btn sm">City</span><span class="btn sm">GA</span><span class="in dd">01 Oct – 21 Oct 2026</span><span class="sp"></span><span class="btn">Export Excel</span><span class="btn">Export PDF</span><i class="pin">2</i></div>
+      <div class="box" style="margin-bottom:12px"><h6>Houses completed per week</h6><div class="chart" style="height:100px"><div style="height:40%"></div><div style="height:55%"></div><div style="height:72%"></div><div style="height:66%"></div><div style="height:90%"></div><div style="height:78%"></div></div></div>
+      <table class="t"><tr><th>Service Order</th><th>GA</th><th>Total houses</th><th>Completed</th><th>In progress</th><th>Cancelled</th><th>% done</th></tr>
+        <tr><td><b>SO-4500127</b></td><td>Ahmedabad</td><td>240</td><td>172</td><td>51</td><td>17</td><td>72%</td></tr>
+        <tr><td><b>SO-4500131</b></td><td>Ahmedabad</td><td>180</td><td>72</td><td>101</td><td>7</td><td>40%</td></tr>
+        <tr><td><b>SO-4500098</b></td><td>Vadodara</td><td>95</td><td>95</td><td>0</td><td>0</td><td>100%</td></tr></table>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Choose the level — Service Order, contractor, city or GA — and a date range.</li>
+    <li>Download any report as Excel or PDF.</li></ol><div class="tip">The exact list of predefined reports will be finalised with Gujarat Energy Ltd during discovery.</div></aside></div>
+</section>
+
+<!-- ======================= GA ADMIN ======================= -->
+<section class="screen" id="g-login" data-group="GA Admin Portal" data-title="Login (OTP)">
+  <div class="shead"><span class="role r-ga">GA Admin Portal · Web</span><h2>GA Admin login</h2><p>GA Admins sign in with their mobile number and a one-time password (OTP).</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="none" data-url="lmc.gujaratenergy.in/ga"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;min-height:400px">
+      <div class="ph" style="border-radius:0;border:0">Branding</div>
+      <div style="padding:50px 34px;border-right:1px solid var(--line2)"><span class="chip c-grey">Step 1</span><h3 style="margin:10px 0 4px">GA Admin sign in</h3><div class="lbl">Mobile number <i class="pin">1</i></div><div class="in blk val">+91 98XXX XXX55</div><span class="btn p full" style="margin-top:16px">Send OTP</span></div>
+      <div style="padding:50px 34px"><span class="chip c-grey">Step 2</span><h3 style="margin:10px 0 4px">Enter OTP</h3><p style="margin:0;color:var(--mute);font-size:12px">Sent to +91 98XXX XXX55</p><div class="otp" style="justify-content:flex-start"><b>4</b><b>8</b><b>2</b><b>9</b><b></b><b></b></div><div style="font-size:12px;color:var(--mute)">Resend OTP in 0:24 <i class="pin">2</i></div><span class="btn p full" style="margin-top:16px">Verify &amp; sign in</span></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Only mobile numbers added by the master Admin can sign in.</li>
+    <li>OTP is sent by SMS, with an option to resend.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="g-dash" data-group="GA Admin Portal" data-title="Dashboard">
+  <div class="shead"><span class="role r-ga">GA Admin Portal · Web</span><h2>GA dashboard</h2><p>The same overview as the Admin dashboard, but limited to the GA Admin's own Geographical Area.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="ga" data-active="Dashboard" data-title="Dashboard · Ahmedabad GA"><div class="wbody">
+      <div class="row" style="margin-bottom:14px"><span class="chip c-purple">GA: Ahmedabad (fixed)</span><i class="pin">1</i><span class="in dd">All work centers</span><span class="in dd">All contractors</span><span class="in dd">01 Oct – 21 Oct 2026</span><i class="pin">2</i></div>
+      <div class="grid g6" style="margin-bottom:14px">
+        <div class="box kpi"><div class="l">Total SOs</div><div class="n">128</div></div><div class="box kpi"><div class="l">Active SOs</div><div class="n">46</div></div><div class="box kpi"><div class="l">Completed SOs</div><div class="n">82</div></div>
+        <div class="box kpi"><div class="l">Contractors</div><div class="n">9</div></div><div class="box kpi"><div class="l">Supervisors</div><div class="n">27</div></div><div class="box kpi"><div class="l">Plumber teams</div><div class="n">71</div></div></div>
+      <div class="notice warn" style="margin-bottom:12px">2 work centers have Service Orders but no contractor mapped. <span class="btn sm" data-go="g-map" style="margin-left:6px">Map now</span> <i class="pin">4</i></div>
+      <div class="box"><h6>Recent activity in Ahmedabad GA <i class="pin">3</i></h6><div class="feed">
+        <div><i style="background:var(--bad)"></i><div><b>House cancelled</b> — B-12, Sundaram Society<small>Reason: Customer not interested · 10 min ago</small></div></div>
+        <div><i style="background:var(--pin)"></i><div><b>Dispute raised</b> — A-304, Shivalay Residency<small>House locked on 3 visits · 32 min ago</small></div></div>
+        <div><i style="background:var(--ok)"></i><div><b>Completed</b> — 18 houses in SO-4500127<small>1 hr ago</small></div></div></div></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>The GA is fixed to the GA Admin's own area. They cannot switch to another GA.</li>
+    <li>Quick filters by work center, contractor and date range.</li>
+    <li>Recent activity — with cancellation and dispute alerts — for this GA only.</li><li>Work centers that have Service Orders but no contractor yet are flagged, with a shortcut to map them.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="g-map" data-group="GA Admin Portal" data-title="Work center mapping">
+  <div class="shead"><span class="role r-ga">GA Admin Portal · Web</span><h2>Work center ↔ contractor mapping</h2><p>SAP sends only work centers. The GA Admin links each one to a contractor by adding the contractor's mobile number. This is how a contractor gets access.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="ga" data-active="Work Center Mapping" data-title="Work Center Mapping · Ahmedabad GA"><div class="wbody">
+      <div class="row" style="margin-bottom:12px"><span class="in srch">Search work center code</span><span class="in dd">City</span><span class="in dd">Mapping: All</span><i class="pin">1</i><span class="sp"></span><span class="btn p" data-go="g-mapadd">+ Map contractor</span><i class="pin">2</i></div>
+      <table class="t"><tr><th>Work center code</th><th>Description (contractor name)</th><th>City</th><th>Contractor mobile <i class="pin">3</i></th><th>Service Orders</th><th></th></tr>
+        <tr><td><b>WC-AHD-03</b></td><td>Shree Gas Infra</td><td>Ahmedabad</td><td>98XXXXXX10</td><td>4</td><td class="m">View</td></tr>
+        <tr><td><b>WC-AHD-05</b></td><td>Shree Gas Infra</td><td>Ahmedabad</td><td>98XXXXXX10</td><td>2</td><td class="m">View</td></tr>
+        <tr><td><b>WC-GNR-02</b></td><td>Shree Gas Infra</td><td>Gandhinagar</td><td>98XXXXXX10</td><td>0</td><td class="m">View</td></tr>
+        <tr><td><b>WC-GNR-04</b></td><td>Krishna Utility Services</td><td>Gandhinagar</td><td>90XXXXXX78</td><td>1</td><td class="m">View</td></tr>
+        <tr style="background:#fff8dc"><td><b>WC-AHD-09</b></td><td>Bharat Pipe Fitters</td><td>Ahmedabad</td><td><span class="chip c-warn">Not mapped</span> <i class="pin">4</i></td><td>3</td><td><span class="btn sm p" data-go="g-mapadd">Map</span></td></tr>
+        <tr style="background:#fff8dc"><td><b>WC-SND-01</b></td><td>Sanand Gas Services</td><td>Sanand</td><td><span class="chip c-warn">Not mapped</span></td><td>1</td><td><span class="btn sm p" data-go="g-mapadd">Map</span></td></tr></table>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Every work center of this GA received from SAP — search by code, filter by city and mapping state.</li>
+    <li>"Map contractor" opens the mapping form (next screen).</li>
+    <li>The contractor's mobile number is their identifier. One contractor can have several work centers; each work center has one contractor.</li>
+    <li>Service Orders for an unmapped work center wait here, visible to the GA Admin and Admin, until a contractor is mapped.</li></ol>
+    <div class="tip">Mapping is at work center level only — individual houses are never mapped to a contractor.</div></aside></div>
+</section>
+<section class="screen" id="g-mapadd" data-group="GA Admin Portal" data-title="Map a contractor">
+  <div class="shead"><span class="role r-ga">GA Admin Portal · Web</span><h2>Map a contractor to work centers</h2><p>Enter the contractor's mobile number and pick their work centers. A new number creates the contractor's login; an existing number gets the extra work centers.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="ga" data-active="Work Center Mapping" data-title="Work Center Mapping · Ahmedabad GA"><div class="wbody ovl" style="min-height:520px">
+      <table class="t"><tr><th>Work center code</th><th>Description</th><th>City</th><th>Contractor mobile</th></tr>
+        <tr><td>WC-AHD-03</td><td>Shree Gas Infra</td><td>Ahmedabad</td><td>98XXXXXX10</td></tr><tr><td>WC-AHD-09</td><td>Bharat Pipe Fitters</td><td>Ahmedabad</td><td>Not mapped</td></tr><tr><td>WC-SND-01</td><td>Sanand Gas Services</td><td>Sanand</td><td>Not mapped</td></tr></table>
+      <div class="modal" style="top:40px;width:460px"><h3>Map contractor</h3><p>The contractor will sign in with this mobile number + OTP.</p>
+        <div class="lbl">Contractor mobile number * <i class="pin">1</i></div><div class="in blk val">+91 94XXX XXX62</div>
+        <div class="notice" style="margin-top:6px;padding:6px 10px">New contractor — a login will be created for this number.</div>
+        <div class="lbl">Work centers * <i class="pin">2</i></div>
+        <div class="box" style="padding:6px 10px">
+          <div class="row" style="padding:5px 0;border-bottom:1px solid var(--line2)"><span class="cb on"></span><b style="font-size:12px">WC-AHD-09</b><span style="font-size:12px;color:var(--mute)">Bharat Pipe Fitters · Ahmedabad</span></div>
+          <div class="row" style="padding:5px 0;border-bottom:1px solid var(--line2)"><span class="cb"></span><b style="font-size:12px">WC-SND-01</b><span style="font-size:12px;color:var(--mute)">Sanand Gas Services · Sanand</span></div>
+          <div class="row" style="padding:5px 0;opacity:.5"><span class="cb"></span><b style="font-size:12px">WC-AHD-03</b><span style="font-size:12px;color:var(--mute)">Already mapped to 98XXXXXX10</span></div></div>
+        <div class="lbl">Contractor name</div><div class="in blk val">Bharat Pipe Fitters <span style="color:var(--faint);font-size:11px">from work center description</span></div><i class="pin">3</i>
+        <div class="row" style="margin-top:14px;justify-content:flex-end"><span class="btn">Cancel</span><span class="btn p">Save mapping</span></div></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>The mobile number identifies the contractor. If it already exists, the selected work centers are added to that contractor.</li>
+    <li>Pick one or more work centers of this GA. A work center already mapped to someone else can't be picked.</li>
+    <li>The contractor's name is taken from the Work Center Description sent by SAP.</li></ol>
+    <div class="tip">Every mapping change is saved in the activity log with the GA Admin's name and time.</div></aside></div>
+</section>
+
+<section class="screen" id="g-so" data-group="GA Admin Portal" data-title="Service Orders & other modules">
+  <div class="shead"><span class="role r-ga">GA Admin Portal · Web</span><h2>GA Service Orders &amp; other modules</h2><p>GA Admins work with the same screens as the Admin — Service Orders, Contractors, Monitoring &amp; Logs, Cancellations &amp; Disputes, and Reports — filtered to their GA.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="ga" data-active="Service Orders" data-title="Service Orders · Ahmedabad GA"><div class="wbody">
+      <div class="row" style="margin-bottom:12px"><span class="in srch">Search by Service Order name</span><span class="in dd">Work center</span><span class="in dd">Contractor</span><span class="in dd">Status</span><span class="sp"></span><span class="in dd">Sort: Newest first</span></div>
+      <table class="t"><tr><th>Service Order <i class="pin">1</i></th><th>Work center</th><th>Contractor</th><th>Houses</th><th>Progress</th><th>Status</th></tr>
+        <tr><td><b>SO-4500127 · Bopal Phase 2</b></td><td>WC-AHD-03</td><td>Shree Gas Infra</td><td>240</td><td><div class="bar"><i style="width:72%"></i></div></td><td><span class="chip c-info">Active</span></td></tr>
+        <tr><td><b>SO-4500131 · Sector 26</b></td><td>WC-GNR-01</td><td>Patel Pipeline Works</td><td>180</td><td><div class="bar"><i style="width:40%"></i></div></td><td><span class="chip c-info">Active</span></td></tr>
+        <tr><td><b>SO-4500151 · Gota</b></td><td>WC-AHD-05</td><td>Shree Gas Infra</td><td>130</td><td><div class="bar"><i style="width:0"></i></div></td><td><span class="chip c-grey">New</span></td></tr></table>
+      <div class="notice" style="margin-top:14px"><i class="pin">2</i> Service Order details, house details, contractor profiles, logs, disputes and reports look the same as in the Admin Panel — only this GA's data is shown.</div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Service Orders are identified by name (the GA is already known).</li>
+    <li>Other GA modules re-use the Admin screens (Service Order detail with contractor history, Contractors, Logs, Disputes, Reports), limited to this GA. One GA cannot view or manage another GA's data.</li></ol></aside></div>
+</section>
+
+<!-- ======================= CONTRACTOR ======================= -->
+<section class="screen" id="c-login" data-group="Contractor Web Portal" data-title="Login (OTP)">
+  <div class="shead"><span class="role r-con">Contractor Portal · Web</span><h2>Contractor login</h2><p>Contractors sign in with the mobile number the GA Admin mapped to their work centers, and an OTP.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="none" data-url="lmc.gujaratenergy.in/contractor"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;min-height:400px">
+      <div class="ph" style="border-radius:0;border:0">Branding</div>
+      <div style="padding:50px 34px;border-right:1px solid var(--line2)"><span class="chip c-grey">Step 1</span><h3 style="margin:10px 0 4px">Contractor sign in</h3><div class="lbl">Mobile number <i class="pin">1</i></div><div class="in blk val">+91 98XXX XXX10</div><span class="btn p full" style="margin-top:16px">Send OTP</span></div>
+      <div style="padding:50px 34px"><span class="chip c-grey">Step 2</span><h3 style="margin:10px 0 4px">Enter OTP</h3><div class="otp" style="justify-content:flex-start"><b>7</b><b>1</b><b>0</b><b>3</b><b></b><b></b></div><div style="font-size:12px;color:var(--acc)">Resend OTP <i class="pin">2</i></div><span class="btn p full" style="margin-top:16px">Verify &amp; sign in</span></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Only mobile numbers mapped to a work center by a GA Admin can sign in.</li>
+    <li>OTP with resend option and secure session handling.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="c-wc" data-group="Contractor Web Portal" data-title="Choose GA & City">
+  <div class="shead"><span class="role r-con">Contractor Portal · Web</span><h2>Choose GA and City</h2><p>After login, the contractor picks a GA and then a City. Service Orders are shown for the chosen city, across the contractor's work centers there.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="none" data-url="lmc.gujaratenergy.in/contractor"><div style="padding:36px 56px;min-height:440px">
+      <h3 style="margin:0 0 4px">Welcome, Shree Gas Infra</h3><p style="margin:0 0 20px;color:var(--mute);font-size:12.5px">Choose where you want to work today</p>
+      <div class="grid g2" style="gap:24px;max-width:760px">
+        <div><div class="lbl" style="margin-top:0">1. GA <i class="pin">1</i></div>
+          <div class="box" style="border-color:var(--acc);background:var(--acc-soft);margin-bottom:8px"><b>Ahmedabad GA</b><small style="display:block;color:var(--mute);margin-top:3px">3 work centers · 2 cities</small></div>
+          <div class="box"><b>Vadodara GA</b><small style="display:block;color:var(--mute);margin-top:3px">1 work center · 1 city</small></div></div>
+        <div><div class="lbl" style="margin-top:0">2. City <i class="pin">2</i></div>
+          <div class="box" style="border-color:var(--acc);background:var(--acc-soft);margin-bottom:8px"><b>Ahmedabad</b><small style="display:block;color:var(--mute);margin-top:3px">WC-AHD-03, WC-AHD-05 · 6 active SOs</small></div>
+          <div class="box"><b>Gandhinagar</b><small style="display:block;color:var(--mute);margin-top:3px">WC-GNR-02 · no active SOs</small></div></div></div>
+      <span class="btn p" style="margin-top:22px">Continue</span>
+      <p style="margin-top:16px;font-size:12px;color:var(--mute)">GA and City can be changed any time from the top bar. <i class="pin">3</i></p>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Only GAs where the contractor has mapped work centers are listed.</li>
+    <li>Cities come from the city ↔ work center mapping held in LMC.</li>
+    <li>A GA · City switcher stays in the top bar on every contractor screen.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="c-so" data-group="Contractor Web Portal" data-title="Service Orders">
+  <div class="shead"><span class="role r-con">Contractor Portal · Web</span><h2>Service Orders for the selected city</h2><p>All Service Orders of the contractor's work centers in the chosen city.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="con" data-active="Service Orders" data-title="Service Orders"><div class="wbody">
+      <div class="grid g4" style="margin-bottom:14px"><div class="box kpi"><div class="l">Active SOs</div><div class="n">6</div></div><div class="box kpi"><div class="l">Houses not assigned</div><div class="n" style="color:var(--warn)">58</div></div><div class="box kpi"><div class="l">Awaiting approval</div><div class="n">22</div></div><div class="box kpi"><div class="l">Completed</div><div class="n" style="color:var(--ok)">412</div></div></div>
+      <div class="row" style="margin-bottom:10px"><span class="in srch">Search Job Order number</span><span class="in dd">Work center: All</span><i class="pin">1</i></div>
+      <table class="t"><tr><th>Job Order</th><th>Work center</th><th>Assign date</th><th>Houses</th><th>Not assigned <i class="pin">2</i></th><th>Progress</th><th></th></tr>
+        <tr><td><b>SO-4500127 · Bopal Phase 2</b></td><td>WC-AHD-03</td><td class="m">02 Oct</td><td>240</td><td>12</td><td><div class="bar"><i style="width:72%"></i></div></td><td><span class="btn sm">Open</span></td></tr>
+        <tr><td><b>SO-4500151 · Gota</b></td><td>WC-AHD-05</td><td class="m">21 Oct</td><td>130</td><td><span class="chip c-warn">130</span></td><td><div class="bar"><i style="width:0"></i></div></td><td><span class="btn sm">Open</span></td></tr>
+        <tr style="background:#f5f0fd"><td><b>SO-4500160 · Chandkheda</b> <span class="chip c-purple">Moved in</span> <i class="pin">3</i></td><td>WC-AHD-03</td><td class="m">19 Nov</td><td>95</td><td><span class="chip c-warn">61</span></td><td><div class="bar"><i style="width:36%"></i></div></td><td><span class="btn sm">Open</span></td></tr>
+        <tr><td><b>SO-4500109 · Shela</b></td><td>WC-AHD-03</td><td class="m">18 Sep</td><td>160</td><td>0</td><td><div class="bar"><i style="width:88%"></i></div></td><td><span class="btn sm">Open</span></td></tr></table>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Service Orders of the contractor's work centers in the selected city; filter by work center.</li>
+    <li>"Not assigned" shows how many houses still need a Supervisor, so new work is never missed.</li>
+    <li>A Service Order moved to this contractor from another one is marked "Moved in". Steps already approved stay; the remaining houses and stages show as not assigned.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="c-leads" data-group="Contractor Web Portal" data-title="Customers / leads">
+  <div class="shead"><span class="role r-con">Contractor Portal · Web</span><h2>Customers in a Service Order</h2><p>Every customer needing a PNG connection, with status — and the place to give houses to Supervisors.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="con" data-active="Customers / Leads" data-title="SO-4500127 · Bopal Phase 2"><div class="wbody">
+      <div class="row" style="margin-bottom:10px"><span class="in srch">Search customer / house</span><span class="in dd">Status</span><span class="in dd">Area</span><span class="in dd">Supervisor</span><i class="pin">1</i></div>
+      <div class="row" style="background:var(--acc-soft);border-radius:8px;padding:8px 12px;margin-bottom:10px"><b style="font-size:12.5px">3 houses selected</b><span class="sp"></span><span class="btn sm">Clear</span><span class="btn sm p">Assign to Supervisor</span><i class="pin">2</i></div>
+      <table class="t"><tr><th><span class="cb"></span></th><th>Customer</th><th>House / area</th><th>Supervisor</th><th>Current step</th><th>Status</th></tr>
+        <tr><td><span class="cb on"></span></td><td><b>Suresh Prajapati</b></td><td class="m">C-02, Shanti Tenements · Bopal</td><td class="m">—</td><td class="m">—</td><td><span class="chip c-grey">Not assigned</span></td></tr>
+        <tr><td><span class="cb on"></span></td><td><b>Meena Rana</b></td><td class="m">C-05, Shanti Tenements · Bopal</td><td class="m">—</td><td class="m">—</td><td><span class="chip c-grey">Not assigned</span></td></tr>
+        <tr><td><span class="cb on"></span></td><td><b>Jayesh Soni</b></td><td class="m">C-09, Shanti Tenements · Bopal</td><td class="m">—</td><td class="m">—</td><td><span class="chip c-grey">Not assigned</span></td></tr>
+        <tr><td><span class="cb"></span></td><td><b>Hetal Shah</b></td><td class="m">A-304, Shivalay Residency · Bopal</td><td>Rakesh Parmar</td><td>Step 3 of 5</td><td><span class="chip c-warn">Awaiting approval</span></td></tr>
+        <tr><td><span class="cb"></span></td><td><b>Kiran Joshi</b></td><td class="m">B-11, Ratnadeep Flats · Ambli</td><td>Nilesh Chauhan</td><td>Step 2 of 5</td><td><span class="chip c-bad">Rework</span></td></tr>
+        <tr><td><span class="cb"></span></td><td><b>Ramesh Patel</b></td><td class="m">12, Sundaram Society · Bopal</td><td>Rakesh Parmar</td><td>Done</td><td><span class="chip c-ok">Completed</span></td></tr></table>
+      <div class="pgn"><span>Showing 1–6 of 240 · click a customer to view details &amp; full history <i class="pin">3</i></span><span class="pp"><b>‹</b><b class="on">1</b><b>2</b><b>…</b><b>40</b><b>›</b></span></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Search and filter by status, area and Supervisor.</li>
+    <li>Tick one or many houses and assign them in one go (bulk assignment).</li>
+    <li>Opening a customer shows house details, current step and the full history — including steps done under a previous contractor.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="c-assign" data-group="Contractor Web Portal" data-title="Assign leads to Supervisor">
+  <div class="shead"><span class="role r-con">Contractor Portal · Web</span><h2>Assign or reassign houses to a Supervisor</h2><p>The pop-up that opens after clicking "Assign to Supervisor".</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="con" data-active="Customers / Leads" data-title="SO-4500127 · Bopal Phase 2"><div class="wbody ovl" style="min-height:470px">
+      <table class="t"><tr><th></th><th>Customer</th><th>House</th><th>Supervisor</th><th>Status</th></tr>
+      <tr><td><span class="cb on"></span></td><td>Suresh Prajapati</td><td>C-02</td><td>—</td><td></td></tr><tr><td><span class="cb on"></span></td><td>Meena Rana</td><td>C-05</td><td>—</td><td></td></tr><tr><td><span class="cb on"></span></td><td>Jayesh Soni</td><td>C-09</td><td>—</td><td></td></tr><tr><td></td><td>Hetal Shah</td><td>A-304</td><td>Rakesh</td><td></td></tr></table>
+      <div class="modal"><h3>Assign 3 houses</h3><p>Choose one Supervisor <i class="pin">1</i></p>
+        <div class="vlist" style="margin-top:8px">
+          <div class="card"><span class="radio on"></span><div><b>Rakesh Parmar</b><small>34 houses currently assigned</small></div></div>
+          <div class="card"><span class="radio"></span><div><b>Nilesh Chauhan</b><small>41 houses currently assigned</small></div></div>
+          <div class="card"><span class="radio"></span><div><b>Vipul Thakor</b><small>12 houses currently assigned</small></div></div></div>
+        <div class="notice warn" style="margin-top:6px">If a selected house already has a Supervisor, it will move to the new Supervisor. <i class="pin">2</i></div>
+        <div class="row" style="margin-top:14px;justify-content:flex-end"><span class="btn">Cancel</span><span class="btn p">Assign</span></div></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>A house can belong to only one Supervisor at a time — houses are never split. Current workload is shown to help balance work.</li>
+    <li>Reassigning simply changes the Supervisor. Every assignment and reassignment is recorded in the house's activity log.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="c-sup" data-group="Contractor Web Portal" data-title="Supervisor management">
+  <div class="shead"><span class="role r-con">Contractor Portal · Web</span><h2>Supervisors</h2><p>The contractor creates Supervisors for a GA and one or more cities, and gives each the work centers they will cover.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="con" data-active="Supervisors" data-title="Supervisors"><div class="wbody ovl" style="min-height:540px">
+      <div class="row" style="margin-bottom:12px"><span class="in srch">Search supervisor</span><span class="sp"></span><span class="btn p">+ Add Supervisor</span></div>
+      <table class="t"><tr><th>Name</th><th>Mobile</th><th>Cities</th><th>Work centers</th><th>Houses</th><th>Status</th></tr>
+        <tr><td><b>Rakesh Parmar</b></td><td class="m">98XXXXXX31</td><td>Ahmedabad</td><td>WC-AHD-03, WC-AHD-05</td><td>34</td><td><span class="chip c-ok">Active</span></td></tr>
+        <tr><td><b>Nilesh Chauhan</b></td><td class="m">97XXXXXX86</td><td>Ahmedabad, Gandhinagar</td><td>WC-AHD-03, WC-GNR-02</td><td>41</td><td><span class="chip c-ok">Active</span></td></tr>
+        <tr><td><b>Ketan Vyas</b></td><td class="m">90XXXXXX65</td><td>Ahmedabad</td><td>WC-AHD-05</td><td>0</td><td><span class="chip c-grey">Inactive</span></td></tr></table>
+      <div class="modal" style="top:30px;width:460px"><h3>Add Supervisor</h3><p>The Supervisor signs in to the mobile app with this number + OTP.</p>
+        <div class="f2"><div><div class="lbl">Full name *</div><div class="in blk">Enter name</div></div><div><div class="lbl">Mobile number *</div><div class="in blk">+91</div></div></div>
+        <div class="lbl">GA * <i class="pin">1</i></div><div class="in dd blk val">Ahmedabad GA</div>
+        <div class="lbl">Cities * (one or more) <i class="pin">2</i></div>
+        <div class="row" style="gap:6px"><span class="chip c-info">Ahmedabad ✕</span><span class="chip c-info">Gandhinagar ✕</span><span class="in dd" style="min-width:90px">Add</span></div>
+        <div class="lbl">Work centers * <i class="pin">3</i></div>
+        <div class="box" style="padding:6px 10px">
+          <div class="row" style="padding:4px 0"><span class="cb on"></span><b style="font-size:12px">WC-AHD-03</b><span style="font-size:12px;color:var(--mute)">Ahmedabad</span></div>
+          <div class="row" style="padding:4px 0"><span class="cb"></span><b style="font-size:12px">WC-AHD-05</b><span style="font-size:12px;color:var(--mute)">Ahmedabad</span></div>
+          <div class="row" style="padding:4px 0"><span class="cb on"></span><b style="font-size:12px">WC-GNR-02</b><span style="font-size:12px;color:var(--mute)">Gandhinagar</span></div></div>
+        <div class="row" style="margin-top:14px;justify-content:flex-end"><span class="btn">Cancel</span><span class="btn p">Save</span></div></div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Each Supervisor belongs to one GA.</li>
+    <li>A Supervisor can cover more than one city.</li>
+    <li>Pick the work centers they will work in, from the contractor's work centers in those cities. In the app, the Supervisor chooses one of these at a time.</li></ol>
+    <div class="tip">Supervisors can be edited, deactivated or re-activated from the list. Each one's assigned house count is shown.</div></aside></div>
+</section>
+
+<section class="screen" id="c-rep" data-group="Contractor Web Portal" data-title="Logs & reports">
+  <div class="shead"><span class="role r-con">Contractor Portal · Web</span><h2>Analytics &amp; reports</h2><p>Work-done and progress reports across the contractor's Service Orders, with the activity log for every house.</p></div>
+  <div class="sgrid"><div class="canvas">
+    <div class="web" data-role="con" data-active="Reports" data-title="Reports"><div class="wbody">
+      <div class="row" style="margin-bottom:12px"><span style="font-size:12px;color:var(--mute)">Break down by <i class="pin">1</i></span><span class="btn sm p">Supervisor</span><span class="btn sm">Status</span><span class="btn sm">City</span><span class="btn sm">Work center</span><span class="btn sm">Timeframe</span><span class="in dd">This month</span><span class="sp"></span><span class="btn">Export</span><i class="pin">2</i></div>
+      <div class="grid" style="grid-template-columns:1fr 1.3fr">
+        <div class="box"><h6>Completed by Supervisor</h6><div class="chart"><div style="height:80%"></div><div style="height:92%"></div><div style="height:34%"></div></div><div class="chart-l"><span>Rakesh</span><span>Nilesh</span><span>Vipul</span></div></div>
+        <table class="t"><tr><th>Supervisor</th><th>Assigned</th><th>Done</th><th>Waiting approval</th><th>Rework</th></tr>
+          <tr><td><b>Rakesh Parmar</b></td><td>34</td><td>118</td><td>9</td><td>2</td></tr><tr><td><b>Nilesh Chauhan</b></td><td>41</td><td>136</td><td>11</td><td>5</td></tr><tr><td><b>Vipul Thakor</b></td><td>12</td><td>49</td><td>2</td><td>0</td></tr></table></div>
+      <div class="notice" style="margin-top:14px"><i class="pin">3</i> "Activity Logs" in the menu shows the step-wise progress and full history of every individual house.</div>
+    </div></div>
+  </div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Breakdowns by Supervisor, status, city and timeframe.</li>
+    <li>Export reports.</li>
+    <li>Status, logs and step-wise tracking for every house the contractor owns.</li></ol></aside></div>
+</section>
+
+<!-- ======================= MOBILE APP ======================= -->
+<section class="screen" id="m-login" data-group="Mobile App · Login" data-title="Login with role selection">
+  <div class="shead"><span class="role r-app">Mobile App · Android &amp; iOS</span><h2>One app, two roles</h2><p>Supervisors and Plumber Teams use the same mobile app. They choose their role, then sign in with mobile number + OTP.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="LMC" data-noback="1"><div style="text-align:center;padding:10px 0 16px"><div class="ph" style="width:64px;height:64px;margin:0 auto 10px;border-radius:16px">Logo</div><b style="font-size:15px">Welcome</b><div style="color:var(--mute)">Who are you? <i class="pin">1</i></div></div>
+      <div class="vlist"><div class="card" style="border-color:var(--acc);background:var(--acc-soft)"><span class="radio on"></span><div><b>Supervisor</b><small>Assign teams, approve work</small></div></div><div class="card"><span class="radio"></span><div><b>Plumber Team</b><small>Do the work at site</small></div></div></div>
+      <span class="btn p full" style="margin-top:14px">Continue</span></div><p>1 · Choose role</p></div>
+    <div class="pcap"><div class="phone" data-title="Sign in"><b style="font-size:15px">Enter your mobile number</b><p style="color:var(--mute);margin:4px 0 12px">Use the number given to your Contractor</p><div class="in blk val">+91 &nbsp;98XXX XXX31</div><i class="pin" style="margin-top:8px">2</i><span class="btn p full" style="margin-top:16px">Send OTP</span></div><p>2 · Mobile number</p></div>
+    <div class="pcap"><div class="phone" data-title="Verify"><b style="font-size:15px">Enter OTP</b><p style="color:var(--mute);margin:4px 0">Sent to +91 98XXX XXX31</p><div class="otp"><b>5</b><b>0</b><b>9</b><b>1</b><b></b><b></b></div><div style="text-align:center;color:var(--mute)">Resend in 0:18</div><span class="btn p full" style="margin-top:16px">Verify</span><div class="notice warn" style="margin-top:16px">The app needs internet to work. Offline use is not included. <i class="pin">3</i></div></div><p>3 · OTP</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>The user picks Supervisor or Plumber Team. The app then shows only the screens for that role.</li>
+    <li>Only numbers added by the Contractor (for Supervisors) can sign in. Supervisors then pick a work center (next section).</li>
+    <li>The app works online only.</li></ol><div class="tip">Who registers Plumber Teams is under "Pending discussion".</div></aside></div>
+</section>
+
+<!-- Supervisor -->
+<section class="screen" id="s-wc" data-group="Mobile App · Supervisor" data-title="Choose work center">
+  <div class="shead"><span class="role r-sup">Supervisor · Mobile App</span><h2>Choose a work center</h2><p>After login, the Supervisor picks one of the work centers the contractor assigned to them. Everything after this is for that work center.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Work center" data-noback="1">
+      <b style="font-size:15px">Hi Nilesh</b><p style="color:var(--mute);margin:4px 0 12px">Shree Gas Infra · Ahmedabad GA</p>
+      <div class="grp">Your work centers <i class="pin">1</i></div>
+      <div class="vlist">
+        <div class="card" style="border-color:var(--acc);background:var(--acc-soft)"><span class="radio on"></span><div><b>WC-AHD-03</b><small>Ahmedabad · 29 houses</small></div></div>
+        <div class="card"><span class="radio"></span><div><b>WC-GNR-02</b><small>Gandhinagar · 12 houses</small></div></div></div>
+      <span class="btn p full" style="margin-top:14px">Continue</span>
+    </div><p>Pick one</p></div>
+    <div class="pcap"><div class="phone" data-title="My Leads" data-noback="1" data-bell="1" data-tabs="sup" data-tab="Leads">
+      <div class="in dd blk val" style="font-weight:600">WC-AHD-03 · Ahmedabad</div><i class="pin">2</i>
+      <div class="row" style="margin:8px 0;gap:6px"><span class="chip c-info">All 29</span><span class="chip c-warn">To approve 7</span><span class="chip c-grey">Feasibility 5</span></div>
+      <div class="card"><div class="h"><div><b>Hetal Shah</b><small>A-304, Shivalay Residency</small></div><span class="chip c-warn">Approve</span></div><div class="mini-steps"><i class="d"></i><i class="d"></i><i class="c"></i><i></i><i></i></div></div>
+      <div class="card"><div class="h"><div><b>Suresh Prajapati</b><small>C-02, Shanti Tenements</small></div><span class="chip c-grey">Step 1</span></div><small>Feasibility pending</small></div>
+    </div><p>Switcher at the top</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Only the work centers the contractor assigned to this Supervisor are listed. A Supervisor can cover work centers in more than one city.</li>
+    <li>The chosen work center stays at the top of the home screen; tap it to switch.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="s-home" data-group="Mobile App · Supervisor" data-title="My leads">
+  <div class="shead"><span class="role r-sup">Supervisor · Mobile App</span><h2>Supervisor home — my houses</h2><p>Houses the Contractor has given to this Supervisor in the selected work center, grouped by Service Order.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="My Leads" data-noback="1" data-bell="1" data-tabs="sup" data-tab="Leads">
+      <div class="in dd blk val" style="font-weight:600;margin-bottom:6px">WC-AHD-03 · Ahmedabad</div>
+      <div class="in srch blk">Search house / customer</div>
+      <div class="row" style="margin:8px 0;gap:6px"><span class="chip c-info">All 34</span><span class="chip c-warn">To approve 9</span><span class="chip c-grey">Feasibility 6</span><span class="chip c-grey">No team 2</span><span class="chip c-grey">Area ▾</span><i class="pin">1</i></div>
+      <div class="grp">SO-4500127 · Bopal Phase 2 <i class="pin">2</i></div>
+      <div class="card"><div class="h"><div><b>Hetal Shah</b><small>A-304, Shivalay Residency</small></div><span class="chip c-warn">Approve</span></div><div class="mini-steps"><i class="d"></i><i class="d"></i><i class="c"></i><i></i><i></i></div><small>Team A · Step 3 submitted</small></div>
+      <div class="card"><div class="h"><div><b>Suresh Prajapati</b><small>C-02, Shanti Tenements</small></div><span class="chip c-grey">Step 1</span></div><small>Feasibility pending · tap to start first visit</small></div>
+      <div class="grp">SO-4500151 · Gota</div>
+      <div class="card"><div class="h"><div><b>Kiran Joshi</b><small>B-11, Ratnadeep Flats</small></div><span class="chip c-bad">Rework</span></div><div class="mini-steps"><i class="d"></i><i class="r"></i><i></i><i></i><i></i></div></div>
+    </div><p>Home</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Quick filters by status and area, plus search. "Feasibility" shows houses waiting for the Supervisor's first visit; "To approve" shows submitted steps.</li>
+    <li>Houses are grouped by Service Order. Each card shows the step progress at a glance.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="s-feas" data-group="Mobile App · Supervisor" data-title="Step 1 · Feasibility">
+  <div class="shead"><span class="role r-sup">Supervisor · Mobile App</span><h2>Step 1 — First visit &amp; feasibility</h2><p>The Supervisor visits the house first and records whether the connection is feasible. Only a feasible house can be passed to a Plumber Team.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Step 1 · Feasibility" data-tabs="sup" data-tab="Leads">
+      <div class="sec">Customer</div>
+      <dl class="kv"><dt>Name</dt><dd>Suresh Prajapati</dd><dt>House</dt><dd>C-02, Shanti Tenements</dd><dt>Plan type</dt><dd>Standard</dd><dt>Geyser / Extra kitchen</dt><dd>1 / 0</dd></dl>
+      <div class="sec">Is the connection feasible? <i class="pin">1</i></div>
+      <div class="vlist"><div class="card" style="border-color:var(--acc);background:var(--acc-soft);margin-bottom:6px"><span class="radio on"></span><b>Feasible</b></div><div class="card"><span class="radio"></span><b>Not feasible</b></div></div>
+      <div class="sec">Photo proof &amp; location</div>
+      <div class="grid g3" style="gap:5px"><div class="ph" style="height:50px">Photo</div><div class="ph" style="height:50px;border-style:solid;font-size:18px">+</div><div></div></div>
+      <div class="gps" style="margin-top:8px">Location captured · 23.0301, 72.4710</div>
+      <div class="lbl">Comments</div><div class="in ta blk">Optional</div>
+      <span class="btn p full" style="margin:12px 0 4px">Submit &amp; assign team</span><i class="pin">2</i>
+    </div><p>Feasible</p></div>
+    <div class="pcap"><div class="phone" data-title="Step 1 · Feasibility" data-tabs="sup" data-tab="Leads">
+      <div class="sec">Is the connection feasible?</div>
+      <div class="vlist"><div class="card" style="margin-bottom:6px"><span class="radio"></span><b>Feasible</b></div><div class="card" style="border-color:var(--bad);background:var(--bad-s)"><span class="radio on"></span><b>Not feasible</b></div></div>
+      <div class="lbl">Standard reason * <i class="pin">3</i></div><div class="in dd blk">Select reason</div>
+      <small style="display:block;color:var(--mute);margin-top:4px">Reason list to be provided by Gujarat Energy Ltd</small>
+      <div class="lbl">Comments</div><div class="in ta blk">Optional</div>
+      <div class="notice bad" style="margin-top:12px">This house will be closed as <b>Cancelled</b>, and the reason will be sent to SAP. <i class="pin">4</i></div>
+      <span class="btn d full" style="margin:12px 0 4px">Submit — Not feasible</span>
+    </div><p>Not feasible</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>A simple Feasible / Not feasible choice, along with the customer details received from SAP.</li>
+    <li>When feasible, the Supervisor goes straight to assigning the house to a Plumbing team or to Self (next screen).</li>
+    <li>When not feasible, choosing a standard reason is mandatory.</li>
+    <li>A Not feasible house is closed as Cancelled. The Contractor and Admin are notified, and the reason is pushed to SAP.</li></ol>
+    <div class="tip">GPS and photo proof are captured on Step 1 too, like every other step.</div></aside></div>
+</section>
+
+<section class="screen" id="s-lead" data-group="Mobile App · Supervisor" data-title="Assign plumber team">
+  <div class="shead"><span class="role r-sup">Supervisor · Mobile App</span><h2>Assign the house to a Plumber Team</h2><p>After a house is marked Feasible, the Supervisor gives it to one Plumber Team — or chooses Self for small jobs. Before Step 1 is done, assignment is blocked.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Bhavna Desai" data-tabs="sup" data-tab="Leads">
+      <dl class="kv"><dt>House</dt><dd>7, Gulmohar Bungalows</dd><dt>SO</dt><dd>SO-4500127</dd><dt>Mobile</dt><dd>98XXXXXX77</dd></dl>
+      <div class="box" style="margin:12px 0"><h6>Plumber team <i class="pin">1</i></h6><div class="notice warn" style="margin-bottom:8px">Complete Step 1 (feasibility) before assigning a team.</div><span class="btn full" style="opacity:.45">Assign plumber team</span><span class="btn p full" style="margin-top:8px">Start Step 1 · Feasibility</span></div>
+      <div class="grp">Five steps</div>
+      <div style="color:var(--mute);line-height:1.7">1 · First visit &amp; feasibility <span class="chip c-grey">Pending</span><br>2 · Plumbing<br>3 · Ground Connection (GC)<br>4 · Commissioning<br>5 · Conversion</div>
+    </div><p>Before Step 1 — blocked</p></div>
+    <div class="pcap"><div class="phone dim" data-title="Suresh Prajapati" data-tabs="sup" data-tab="Leads"><div style="color:var(--mute)">C-02, Shanti Tenements · Feasible</div>
+      <div class="sheet"><div class="grab"></div><b style="font-size:14px">Assign Steps 2–5 to</b> <i class="pin">2</i><div class="vlist" style="margin-top:10px">
+        <div class="card" style="border-color:var(--acc)"><span class="radio on"></span><div><b>Team A – Mahesh</b><small>6 houses in hand</small></div></div>
+        <div class="card"><span class="radio"></span><div><b>Team B – Jignesh</b><small>3 houses in hand</small></div></div>
+        <div class="card"><span class="radio"></span><div><b>Self</b><small>I will do this job myself</small></div></div></div><i class="pin">3</i>
+        <span class="btn p full">Assign</span><small style="display:block;text-align:center;color:var(--mute);margin-top:8px">One team per house · changes are recorded in the house log <i class="pin">4</i></small></div></div><p>After feasible — pick a team</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Until Step 1 is done, the house cannot be given to a Plumber Team.</li>
+    <li>Once feasible, the Supervisor picks one Plumbing team for the house.</li>
+    <li>For small jobs the Supervisor can choose Self and complete Steps 2–5 personally.</li>
+    <li>Each house has a single Plumber Team. The team can be changed later, and every change is saved in the activity log.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="s-review" data-group="Mobile App · Supervisor" data-title="Review & approve work">
+  <div class="shead"><span class="role r-sup">Supervisor · Mobile App</span><h2>Review a submitted step</h2><p>When a Plumber Team submits any of Steps 2–5, the Supervisor checks it and either approves it or sends it back with a remark. Example: Step 2 · Plumbing.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Step 2 · Review" data-tabs="sup" data-tab="Leads">
+      <small style="color:var(--mute)">Kiran Joshi · B-11 · Plumbing · by Team C · 10:05 AM</small>
+      <div class="grp">Job card <i class="pin">1</i></div><dl class="kv"><dt>Meter Serial No</dt><dd>24B110298</dd><dt>Initial reading</dt><dd>000004</dd><dt>GI checklist</dt><dd>14 Yes · 1 No</dd><dt>Point 8</dt><dd style="color:var(--bad)">No — "Electrical line 250 mm"</dd><dt>PPT</dt><dd>Air · 1.0 / 1.0 kg/cm² · 30 min</dd><dt>HSE / SSRA</dt><dd>Ok</dd></dl>
+      <div class="grp">Photos &amp; location <i class="pin">2</i></div><div class="grid g3" style="gap:5px;margin-bottom:6px"><div class="ph" style="height:46px">Photo</div><div class="ph" style="height:46px">Photo</div><div class="ph" style="height:46px">Photo</div></div><div class="ph" style="height:40px">Map · 23.0350, 72.5070</div>
+      <div class="row" style="position:absolute;left:13px;right:13px;bottom:10px;gap:8px"><span class="btn d" style="flex:1">Send back</span><span class="btn g" style="flex:1">Approve</span></div><i class="pin" style="position:absolute;right:10px;bottom:52px">3</i>
+    </div><p>Submission</p></div>
+    <div class="pcap"><div class="phone dim" data-title="Step 2 · Review" data-tabs="sup" data-tab="Leads"><div style="color:var(--mute)">Kiran Joshi · B-11</div>
+      <div class="sheet"><div class="grab"></div><b style="font-size:14px">Send back for rework</b><p style="color:var(--mute);margin:4px 0 8px">Tell the team what to fix <i class="pin">4</i></p>
+        <div class="in ta" style="color:var(--ink)">Point 8: keep 300 mm clearance from the electrical line and add a sleeve. Retake photo and resubmit.</div>
+        <span class="btn d full" style="margin-top:12px">Send back</span></div></div><p>Send back with remark</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>A summary of the step's form — checklist answers (any "No" is shown clearly), test report, and meter numbers. Tap to see the full form.</li>
+    <li>Photo proof, GPS location and meter numbers (when that step needs them).</li>
+    <li>Approve to unlock the next step — the step's data is then pushed to SAP. Or send it back for rework.</li>
+    <li>A remark is required when sending back. The Plumber Team sees it and resubmits. All past submissions stay in the history.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="s-disp" data-group="Mobile App · Supervisor" data-title="Disputes">
+  <div class="shead"><span class="role r-sup">Supervisor · Mobile App</span><h2>Handle a dispute</h2><p>When a Plumber Team reports a problem at site, the Supervisor decides: resolve it so work continues, or cancel the connection.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Disputes" data-noback="1" data-bell="1" data-tabs="sup" data-tab="Disputes">
+      <div class="row" style="gap:6px;margin-bottom:10px"><span class="chip c-warn">Open 3</span><span class="chip c-grey">Closed</span></div>
+      <div class="card"><div class="h"><b>A-304, Shivalay Residency</b><span class="chip c-warn">Open</span></div><small>Team A · 32 min ago <i class="pin">1</i></small><div style="margin-top:6px">"House locked on 3 visits, customer not reachable."</div></div>
+      <div class="card"><div class="h"><b>9, Prabhu Park</b><span class="chip c-warn">Open</span></div><small>Team B · yesterday</small><div style="margin-top:6px">"No access to gas riser in the building."</div></div>
+    </div><p>Dispute list</p></div>
+    <div class="pcap"><div class="phone" data-title="Dispute" data-tabs="sup" data-tab="Disputes">
+      <b>A-304, Shivalay Residency</b><small style="display:block;color:var(--mute)">Hetal Shah · Raised by Team A at Step 3</small>
+      <div class="box" style="margin:10px 0">House locked on 3 visits, customer not reachable on phone.</div>
+      <span class="btn g full">Mark as resolved</span><i class="pin">2</i>
+      <span class="btn d full" style="margin-top:8px">Cancel this connection</span><i class="pin">3</i>
+      <div class="lbl">Cancellation reason</div><div class="in dd blk">Select reason</div>
+      <div class="notice" style="margin-top:12px">On cancellation, the Contractor and the Admin are notified.</div>
+    </div><p>Dispute decision</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Each dispute shows who raised it and their written reason.</li>
+    <li>Resolved — the dispute closes and the team continues the work.</li>
+    <li>Cancel — work for this customer stops. The Contractor and Admin are notified, and the status goes back to SAP.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="s-notif" data-group="Mobile App · Supervisor" data-title="Notifications">
+  <div class="shead"><span class="role r-sup">Supervisor · Mobile App</span><h2>Supervisor notifications</h2><p>Push and in-app alerts so nothing waits unnoticed.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Alerts" data-noback="1" data-tabs="sup" data-tab="Alerts">
+      <div class="card"><div class="h"><b>Step 3 waiting for approval</b><span class="chip c-warn">New</span></div><small>A-304, Shivalay Residency · Team A · 5 min ago</small></div><i class="pin">1</i>
+      <div class="card"><div class="h"><b>New dispute raised</b><span class="chip c-warn">New</span></div><small>9, Prabhu Park · Team B · 1 hr ago</small></div><i class="pin">2</i>
+      <div class="card"><b>12 houses reassigned to you</b><small>By Shree Gas Infra · SO-4500127 · today</small></div><i class="pin">3</i>
+      <div class="card"><b>Service Order moved to another contractor</b><small>SO-4500131 · Sector 26 · houses removed from your list</small></div>
+      <div class="card"><b>Step 2 resubmitted after rework</b><small>B-11, Ratnadeep Flats · Team C · yesterday</small></div>
+    </div><p>Alerts</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>New submissions waiting for approval.</li>
+    <li>Newly raised disputes.</li>
+    <li>Houses assigned or reassigned to the Supervisor, and Service Orders moved away by SAP. Tapping an alert opens that house.</li></ol></aside></div>
+</section>
+
+<!-- Plumber -->
+<section class="screen" id="p-home" data-group="Mobile App · Plumber Team" data-title="My jobs">
+  <div class="shead"><span class="role r-plb">Plumber Team · Mobile App</span><h2>Plumber Team home — my jobs</h2><p>Houses assigned to this team, with the status and step progress of each. A house reaches the team only after the Supervisor has marked it Feasible.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="My Jobs" data-noback="1" data-bell="1" data-tabs="plb" data-tab="My Jobs">
+      <div class="row" style="gap:6px;margin-bottom:10px"><span class="chip c-info">To do 4</span><span class="chip c-bad">Rework 1</span><span class="chip c-grey">Waiting 2</span><span class="chip c-grey">Done</span><i class="pin">1</i></div>
+      <div class="card" style="border-color:#eab6b2"><div class="h"><div><b>Kiran Joshi</b><small>B-11, Ratnadeep Flats, Ambli</small></div><span class="chip c-bad">Rework</span></div><div class="mini-steps"><i class="d"></i><i class="r"></i><i></i><i></i><i></i></div><small>Step 2 · "Point 8: keep 300 mm clearance…"</small></div><i class="pin">2</i>
+      <div class="card"><div class="h"><div><b>Suresh Prajapati</b><small>C-02, Shanti Tenements, Bopal</small></div><span class="chip c-info">Step 2</span></div><div class="mini-steps"><i class="d"></i><i></i><i></i><i></i><i></i></div><small>New job · Feasible · start plumbing</small></div>
+      <div class="card"><div class="h"><div><b>Hetal Shah</b><small>A-304, Shivalay Residency</small></div><span class="chip c-warn">Waiting</span></div><div class="mini-steps"><i class="d"></i><i class="d"></i><i class="c"></i><i></i><i></i></div><small>Step 3 sent for approval</small></div>
+    </div><p>My jobs</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>Simple filters: what to do now, what needs rework, what is waiting for the Supervisor, and what is done.</li>
+    <li>Rework jobs are highlighted with the Supervisor's remark, so the team knows exactly what to fix.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="p-steps" data-group="Mobile App · Plumber Team" data-title="Five-step tracker">
+  <div class="shead"><span class="role r-plb">Plumber Team · Mobile App</span><h2>The five steps for one house</h2><p>Each house is completed in five fixed steps. A step opens only after the previous one is approved.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Hetal Shah" data-tabs="plb" data-tab="My Jobs">
+      <small style="color:var(--mute)">A-304, Shivalay Residency, Bopal · 98XXXXXX21</small>
+      <span class="btn sm" style="margin:8px 0 10px">Open in Maps</span>
+      <div class="card" style="border-color:#b9e0c9"><div class="h"><b>1 · Feasibility</b><span class="chip c-ok">Feasible</span></div><small>Done by Supervisor</small></div>
+      <div class="card" style="border-color:#b9e0c9"><div class="h"><b>2 · Plumbing</b><span class="chip c-ok">Approved</span></div></div>
+      <div class="card" style="border-color:#f0cf96"><div class="h"><b>3 · Ground Connection</b><span class="chip c-warn">Waiting</span></div><small>Sent 11:42 AM · Supervisor will review <i class="pin">1</i></small></div>
+      <div class="card lock"><div class="h"><b>4 · Commissioning</b><span class="chip c-grey">Locked</span></div></div><i class="pin">2</i>
+      <div class="card lock"><div class="h"><b>5 · Conversion</b><span class="chip c-grey">Locked</span></div></div>
+      <span class="btn full" style="margin-top:4px">Raise a dispute</span><i class="pin">3</i>
+    </div><p>Step tracker</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>The team sees whether each step is approved, waiting, or sent back.</li>
+    <li>Later steps stay locked until the earlier step is approved — this keeps the correct order.</li>
+    <li>If there is a problem at site, the team raises a dispute from here.</li></ol>
+    <div class="tip">Step 1 is done by the Supervisor. The Plumber Team works on Steps 2–5.</div></aside></div>
+</section>
+
+<section class="screen" id="p-s2" data-group="Mobile App · Plumber Team" data-title="Step 2 · Plumbing">
+  <div class="shead"><span class="role r-plb">Plumber Team · Mobile App</span><h2>Step 2 — Plumbing (job card)</h2><p>Filled in after the plumbing work is complete. Long forms scroll inside the phone.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Step 2 · Plumbing" data-tabs="plb" data-tab="My Jobs">
+      <div class="sec">Job card · Meter <i class="pin">1</i></div>
+      <span class="btn sm full" data-go="p-ocr">📷 Scan meter (OCR)</span>
+      <div class="lbl">Meter Serial No <span class="ocrtag">OCR</span></div><div class="in blk val">23A884512</div>
+      <div class="lbl">Initial meter reading <span class="ocrtag">OCR</span></div><div class="in blk val">000182</div>
+      <div class="sec">GI plumbing checklist &amp; compliance <i class="pin">2</i></div>
+      <div class="ck"><p><span>1.</span> Proper alignment of GI pipe &amp; 1 Mtr. distance between two clamps maintained.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>2.</span> PVC Sleeve with Anticorrosive Tape &amp; restoration of hole (in case of wall crossing).</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>3.</span> Installation of Isolation Valve (IV).</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>4.</span> Height of Isolation Valve (5 ft. to 6 ft.).</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>5.</span> Meter clearance from wall (2 cms) &amp; spool used.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>6.</span> Height &amp; safe location of Meter (5 ft. to 6 ft.).</p><div class="row" style="gap:4px;margin-bottom:5px"><span style="font-size:10.5px;color:var(--mute)">Position</span><span class="btn sm p">IN</span><span class="btn sm">OUT</span></div><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>7.</span> RCC Guard properly mounted with cementing &amp; sand filling.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>8.</span> 300 mm clearance maintained from Electrical line &amp; sleeve provided.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>9.</span> Geyser Point installation as per policy &amp; undertaking received.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>10.</span> NRV installed in Meter downstream.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>11.</span> Route clearance &amp; NOC (for Soc./Apt.) obtained.</p><div class="row" style="gap:4px;margin-bottom:5px"><span class="btn sm">⇪ Upload NOC</span><span style="font-size:10.5px;color:var(--mute)">Attached / Uploaded</span></div><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div>
+      <div class="sec">For Riser / Header installation</div>
+      <div class="lbl">Riser/Header No.</div><div class="in blk">Enter number</div>
+      <div class="ck"><p><span>12.</span> Riser/Header Alignment, Clamping, etc.</p><div class="yn"><b>Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>13.</span> Ensure PtW (WAH, GC, Online Tapping), certified PETZEL &amp; Technician on job.</p><div class="yn"><b>Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>14.</span> Union/Tapping Tee installed as required.</p><div class="yn"><b>Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>15.</span> Main Control Valve installed on Riser/Header.</p><div class="yn"><b>Yes</b><b>No</b><span class="in">Remarks</span></div></div>
+      <div class="scrollhint">Continues on the next screen →</div>
+    </div><p>Job card &amp; checklist <span class="scrollhint">(scroll inside)</span></p></div><div class="pcap"><div class="phone" data-title="Step 2 · Plumbing" data-tabs="plb" data-tab="My Jobs">
+      <div class="sec">Pipe Pneumatic Testing (PPT) <i class="pin">3</i></div>
+      <div class="lbl">Testing medium</div><div class="in blk val">Air</div>
+      <div class="lbl">Pressure gauge calibration details</div><div class="in blk">Enter details</div>
+      <div class="f2"><div><div class="lbl">Initial (kg/cm²)</div><div class="in blk val">1.0</div></div><div><div class="lbl">Date / time</div><div class="in blk val">05.11 · 10:20</div></div>
+      <div><div class="lbl">Final (kg/cm²)</div><div class="in blk val">1.0</div></div><div><div class="lbl">Date / time</div><div class="in blk val">05.11 · 10:50</div></div></div>
+      <div class="f2"><div><div class="lbl">Duration (minutes)</div><div class="in blk val">30</div></div><div><div class="lbl">Test result</div><div class="in blk">Enter result</div></div></div><div class="lbl">Overall remarks post PPT</div><div class="in ta blk">Enter remarks</div>
+      <div class="sec">HSE compliance / remarks <i class="pin">4</i></div>
+      <div class="lbl">1. Overall safety provisions at site</div><div class="in blk">Enter details</div>
+      <div class="lbl">2. Near-miss / incident, if any, with brief details</div><div class="in blk">Enter details</div>
+      <div class="lbl">3. Required permit details</div><div class="in blk">Enter details</div>
+      <div class="lbl">4. SSRA (Site Specific Risk Assessment) done &amp; found</div><div class="yn"><b class="y">Ok</b><b>Not Ok</b><span class="in">Remarks</span></div>
+      <div class="sec">Photo proof &amp; location</div>
+      <div class="grid g3" style="gap:5px"><div class="ph" style="height:50px">Photo</div><div class="ph" style="height:50px">Photo</div><div class="ph" style="height:50px;border-style:solid;font-size:18px">+</div></div>
+      <div class="gps" style="margin-top:8px">Location captured · 23.0225, 72.5714</div>
+      <div class="lbl">Comments</div><div class="in ta blk">Optional</div>
+      <span class="btn p full" style="margin:12px 0 4px">Submit for approval</span>
+    </div><p>Testing, HSE &amp; submit <span class="scrollhint">(scroll inside)</span></p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol><li>Meter Serial No and Initial meter reading are read from a photo of the meter using OCR, and can be corrected.</li><li>GI plumbing checklist — 15 inspection points, each Yes / No with remarks. Point 6 also asks for meter position (IN / OUT), point 11 for the NOC upload. Points 12–15 are for riser / header installation.</li><li>Pipe Pneumatic Testing (PPT) report — testing medium, gauge calibration, initial and final pressure with date / time, duration, result and remarks.</li><li>HSE compliance — safety provisions, near-miss / incident, permits and SSRA.</li></ol><div class="tip">No automatic rules are applied to the checklist — the team simply fills it in. The step that captures the remaining LMC → SAP fields is under "Pending discussion".</div></aside></div>
+</section>
+<section class="screen" id="p-s3" data-group="Mobile App · Plumber Team" data-title="Step 3 · Ground Connection">
+  <div class="shead"><span class="role r-plb">Plumber Team · Mobile App</span><h2>Step 3 — Ground Connection (GC)</h2><p>PE laying checklist and the ground connection testing report.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Step 3 · Ground Connection" data-tabs="plb" data-tab="My Jobs">
+      <div class="sec">GC checklist (PE) &amp; compliance <i class="pin">1</i></div>
+      <div class="ck"><p><span>1.</span> PE laying as per Gujarat Energy Ltd guidelines.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>2.</span> Deviation taken for 20mm PE laying, specify (if Yes).</p><div class="yn"><b>Yes</b><b class="n">No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>3.</span> Laying of PE service line up to Transition Fitting including sand filling at required depth.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div>
+      <div class="sec">Ground Connection testing report <i class="pin">2</i></div>
+      <div class="lbl">Testing medium</div><div class="in blk val">Air</div>
+      <div class="lbl">Pressure gauge calibration details</div><div class="in blk">Enter details</div>
+      <div class="f2"><div><div class="lbl">Initial (kg/cm²)</div><div class="in blk val">1.0</div></div><div><div class="lbl">Date / time</div><div class="in blk val">05.11 · 10:20</div></div>
+      <div><div class="lbl">Final (kg/cm²)</div><div class="in blk val">1.0</div></div><div><div class="lbl">Date / time</div><div class="in blk val">05.11 · 10:50</div></div></div>
+      <div class="f2"><div><div class="lbl">Duration (minutes)</div><div class="in blk val">15</div></div><div><div class="lbl">Test result</div><div class="in blk">Enter result</div></div></div><div class="f2"><div><div class="lbl">EF Joint</div><div class="in blk">Enter</div></div><div><div class="lbl">GC Joint No.</div><div class="in blk">Enter</div></div></div>
+      <div class="sec">Photo proof &amp; location</div>
+      <div class="grid g3" style="gap:5px"><div class="ph" style="height:50px">Photo</div><div class="ph" style="height:50px">Photo</div><div class="ph" style="height:50px;border-style:solid;font-size:18px">+</div></div>
+      <div class="gps" style="margin-top:8px">Location captured · 23.0225, 72.5714</div>
+      <div class="lbl">Comments</div><div class="in ta blk">Optional</div>
+      <span class="btn p full" style="margin:12px 0 4px">Submit for approval</span>
+    </div><p>Full form <span class="scrollhint">(scroll inside)</span></p></div><div class="pcap"><div class="phone" data-title="Step 3 · Ground Connection" data-tabs="plb" data-tab="My Jobs">
+      <div class="notice bad">Location is off. Turn on GPS to submit this step. <i class="pin">3</i></div>
+      <span class="btn full" style="margin-top:8px">Turn on location</span>
+      <div style="margin-top:20px;color:var(--mute)">(form as before)</div>
+      <span class="btn full" style="position:absolute;left:13px;right:13px;bottom:10px;width:auto;opacity:.5">Submit for approval</span>
+    </div><p>GPS turned off</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol><li>GC checklist — 3 inspection points, each Yes / No with remarks (point 2 asks to specify the deviation).</li><li>GC testing report — testing medium, gauge calibration, pressures, duration, result, EF joint and GC joint no.</li><li>GPS is mandatory on every step — a step cannot be submitted with location turned off.</li></ol><div class="tip">Who performs Step 3 is under "Pending discussion".</div></aside></div>
+</section>
+<section class="screen" id="p-s4" data-group="Mobile App · Plumber Team" data-title="Step 4 · Commissioning">
+  <div class="shead"><span class="role r-plb">Plumber Team · Mobile App</span><h2>Step 4 — Commissioning (manometer testing)</h2><p>Meter, regulator and appliance installation checks, rubber tube details and the manometer test.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Step 4 · Commissioning" data-tabs="plb" data-tab="My Jobs">
+      <div class="sec">Manometer testing (MMT) checklist <i class="pin">1</i></div>
+      <div class="ck"><p><span>1.</span> Colour Touch-up.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>2.</span> Installation of NG Meter, Regulator, NRV adaptor at meter outlet, Gas Tap &amp; Rubber Tube.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>3.</span> Installation of RCC Guard, Alignment/Mounting with Stenciling, Sand filling &amp; Cementing.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>4.</span> Installation Gas Tap/End plug.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>5.</span> Leak detection of all Joints, Meter &amp; Regulator for ZERO leakage.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>6.</span> Installation of Flexible Rubber Tube (Suraksha, 1.0 Mtr. Length) with Gas Stoves and Geyser Points.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div>
+      <div class="sec">Rubber tube details <i class="pin">2</i></div>
+      <div style="border:1px solid var(--line2);border-radius:8px;padding:6px 8px;margin-top:6px"><b style="font-size:11.5px">a) Rubber Tube (Kitchen 1)</b><div class="lbl" style="margin-top:4px">Make</div><div class="in blk">Enter make</div><div class="f2"><div><div class="lbl">Mfg. date / year</div><div class="in blk">MM / YYYY</div></div><div><div class="lbl">Expiry date / year</div><div class="in blk">MM / YYYY</div></div></div></div><div style="border:1px solid var(--line2);border-radius:8px;padding:6px 8px;margin-top:6px"><b style="font-size:11.5px">b) Rubber Tube (Kitchen 2)</b><div class="lbl" style="margin-top:4px">Make</div><div class="in blk">Enter make</div><div class="f2"><div><div class="lbl">Mfg. date / year</div><div class="in blk">MM / YYYY</div></div><div><div class="lbl">Expiry date / year</div><div class="in blk">MM / YYYY</div></div></div></div><div style="border:1px solid var(--line2);border-radius:8px;padding:6px 8px;margin-top:6px"><b style="font-size:11.5px">c) Rubber Tube (Geyser 1)</b><div class="lbl" style="margin-top:4px">Make</div><div class="in blk">Enter make</div><div class="f2"><div><div class="lbl">Mfg. date / year</div><div class="in blk">MM / YYYY</div></div><div><div class="lbl">Expiry date / year</div><div class="in blk">MM / YYYY</div></div></div></div><div style="border:1px solid var(--line2);border-radius:8px;padding:6px 8px;margin-top:6px"><b style="font-size:11.5px">d) Rubber Tube (Geyser 2)</b><div class="lbl" style="margin-top:4px">Make</div><div class="in blk">Enter make</div><div class="f2"><div><div class="lbl">Mfg. date / year</div><div class="in blk">MM / YYYY</div></div><div><div class="lbl">Expiry date / year</div><div class="in blk">MM / YYYY</div></div></div></div>
+    </div><p>Checklist &amp; rubber tubes <span class="scrollhint">(scroll inside)</span></p></div><div class="pcap"><div class="phone" data-title="Step 4 · Commissioning" data-tabs="plb" data-tab="My Jobs">
+      <div class="sec">Manometer testing report (MMT) <i class="pin">3</i></div>
+      <div class="lbl">Testing medium</div><div class="in blk val">Natural Gas</div>
+      <div class="lbl">Manometer calibration details</div><div class="in blk">Enter details</div>
+      <div class="f2"><div><div class="lbl">Initial (mbar)</div><div class="in blk val">21</div></div><div><div class="lbl">Date / time</div><div class="in blk val">05.11 · 10:20</div></div>
+      <div><div class="lbl">Final (mbar)</div><div class="in blk val">21</div></div><div><div class="lbl">Date / time</div><div class="in blk val">05.11 · 10:50</div></div></div>
+      <div class="f2"><div><div class="lbl">Duration (minutes)</div><div class="in blk val">10</div></div><div><div class="lbl">Test result</div><div class="in blk">Enter result</div></div></div>
+      <div class="sec">Photo proof &amp; location</div>
+      <div class="grid g3" style="gap:5px"><div class="ph" style="height:50px">Photo</div><div class="ph" style="height:50px">Photo</div><div class="ph" style="height:50px;border-style:solid;font-size:18px">+</div></div>
+      <div class="gps" style="margin-top:8px">Location captured · 23.0225, 72.5714</div>
+      <div class="lbl">Comments</div><div class="in ta blk">Optional</div>
+      <span class="btn p full" style="margin:12px 0 4px">Submit for approval</span>
+    </div><p>MMT report &amp; submit <span class="scrollhint">(scroll inside)</span></p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol><li>MMT checklist — 6 inspection points, each Yes / No with remarks.</li><li>Rubber tube details for Kitchen 1 &amp; 2 and Geyser 1 &amp; 2 — make, manufacturing date and expiry date. The expiry date is also sent to SAP.</li><li>Manometer testing report — natural gas, pressures in mbar, duration and result.</li></ol></aside></div>
+</section>
+<section class="screen" id="p-s5" data-group="Mobile App · Plumber Team" data-title="Step 5 · Conversion">
+  <div class="shead"><span class="role r-plb">Plumber Team · Mobile App</span><h2>Step 5 — NG conversion</h2><p>The final step. Once the Supervisor approves it, the house is Completed.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Step 5 · Conversion" data-tabs="plb" data-tab="My Jobs">
+      <div class="sec">NG conversion checklist <i class="pin">1</i></div>
+      <div class="ck"><p><span>1.</span> Emergency sticker installed on NG Meter.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div><div class="ck"><p><span>2.</span> Information given to Customer about Safety &amp; Services.</p><div class="yn"><b class="y">Yes</b><b>No</b><span class="in">Remarks</span></div></div>
+      <div class="sec">NG conversion completion report <i class="pin">2</i></div>
+      <div class="lbl">NG pressure at appliance / burner (MMWC / mbar)</div><div class="in blk">Enter value</div>
+      <div class="sec">Photo proof &amp; location</div>
+      <div class="grid g3" style="gap:5px"><div class="ph" style="height:50px">Photo</div><div class="ph" style="height:50px">Photo</div><div class="ph" style="height:50px;border-style:solid;font-size:18px">+</div></div>
+      <div class="gps" style="margin-top:8px">Location captured · 23.0225, 72.5714</div>
+      <div class="lbl">Comments</div><div class="in ta blk">Optional</div>
+      <span class="btn p full" style="margin:12px 0 4px">Submit for approval</span>
+    </div><p>Full form</p></div><div class="pcap"><div class="phone" data-title="Hetal Shah" data-tabs="plb" data-tab="My Jobs">
+      <div style="text-align:center;padding:40px 10px 10px"><div style="width:56px;height:56px;border-radius:50%;background:var(--ok-s);color:var(--ok);display:grid;place-items:center;margin:0 auto 12px;font-size:26px">✓</div>
+      <b style="font-size:15px">All 5 steps approved</b><p style="color:var(--mute);margin:6px 0 0">This house is <b>Completed</b>. The final status has been sent to SAP. <i class="pin">3</i></p></div>
+      <div class="mini-steps" style="margin-top:18px"><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i></div>
+    </div><p>After Step 5 is approved</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol><li>NG conversion checklist — emergency sticker and customer safety briefing.</li><li>NG pressure at the appliance / burner.</li><li>After approval the house is marked Completed, and the final status goes to SAP.</li></ol></aside></div>
+</section>
+
+<section class="screen" id="p-ocr" data-group="Mobile App · Plumber Team" data-title="Meter reading via OCR">
+  <div class="shead"><span class="role r-plb">Plumber Team · Mobile App</span><h2>Read meter numbers with the camera (OCR)</h2><p>On the step where meter details are needed, the team photographs the meter and the app reads the numbers automatically.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Scan meter" data-tabs="plb" data-tab="My Jobs">
+      <div class="vf"><div class="frame"></div><div style="position:relative;padding:0 50px">Camera view<br>Keep the meter display inside the box <i class="pin">1</i></div></div>
+      <div class="shutter"></div>
+    </div><p>Take photo</p></div>
+    <div class="pcap"><div class="phone" data-title="Check numbers" data-tabs="plb" data-tab="My Jobs">
+      <div class="row" style="gap:8px;margin-bottom:10px"><div class="ph" style="width:64px;height:48px">Meter photo</div><div style="font-size:11.5px;color:var(--mute)">Please check the numbers below and correct any mistake. <i class="pin">2</i></div></div>
+      <div class="ocr"><div><small>Meter Serial No</small><b>23A884512</b></div><span class="tg">Read ✓</span></div>
+      <div class="ocr" style="border-color:#e0a24a"><div><small>Initial meter reading</small><b>000182</b></div><span class="tg" style="color:var(--warn)">Edited</span></div>
+      <div class="row" style="gap:8px;margin-top:10px"><span class="btn" style="flex:1">Retake</span><span class="btn p" style="flex:1">Confirm</span></div><i class="pin" style="margin-top:6px">3</i>
+    </div><p>Verify &amp; confirm</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>The team points the camera at the meter. A guide box helps take a clear photo.</li>
+    <li>The app reads the Meter Serial No and the Initial meter reading. Used in Step 2 · Plumbing.</li>
+    <li>The team can correct any number before confirming. The meter photo is saved with the step.</li></ol>
+    <div class="tip">Gujarat Energy Ltd will share sample meter device photos so the OCR can be tuned to the actual meters.</div></aside></div>
+</section>
+
+<section class="screen" id="p-disp" data-group="Mobile App · Plumber Team" data-title="Raise dispute & alerts">
+  <div class="shead"><span class="role r-plb">Plumber Team · Mobile App</span><h2>Raise a dispute &amp; notifications</h2><p>Reporting a problem at site, and the alerts a Plumber Team receives.</p></div>
+  <div class="sgrid"><div class="canvas"><div class="phones">
+    <div class="pcap"><div class="phone" data-title="Raise dispute" data-tabs="plb" data-tab="My Jobs">
+      <b>A-304, Shivalay Residency</b><small style="display:block;color:var(--mute)">Hetal Shah · Step 3</small>
+      <div class="lbl" style="margin-top:14px">What is the problem? <i class="pin">1</i></div>
+      <div class="in ta" style="color:var(--ink);min-height:110px">House locked on 3 visits, customer not reachable on phone.</div>
+      <div class="notice" style="margin-top:12px">This will be sent to your Supervisor, who will resolve it or cancel the job.</div>
+      <span class="btn p full" style="position:absolute;left:13px;right:13px;bottom:10px;width:auto">Send to Supervisor</span>
+    </div><p>Raise dispute</p></div>
+    <div class="pcap"><div class="phone" data-title="Alerts" data-noback="1" data-tabs="plb" data-tab="Alerts">
+      <div class="card"><div class="h"><b>New job assigned</b><span class="chip c-info">New</span></div><small>C-02, Shanti Tenements · by Rakesh Parmar</small></div><i class="pin">2</i>
+      <div class="card"><div class="h"><b>Step 2 approved</b></div><small>A-304, Shivalay Residency · Step 3 is now open</small></div>
+      <div class="card"><div class="h"><b>Step 2 sent back</b><span class="chip c-bad">Rework</span></div><small>B-11, Ratnadeep Flats · "Photo of joint not clear"</small></div>
+      <div class="card"><b>Job moved to another contractor</b><small>D-3, Sector 26 · removed from your list</small></div>
+      <div class="card"><b>Dispute resolved</b><small>14, Nandanvan Society · continue work</small></div>
+    </div><p>Alerts</p></div>
+  </div></div><aside class="notes"><h4>What you see</h4><ol>
+    <li>The team writes the reason for the dispute. It goes straight to their Supervisor.</li>
+    <li>Alerts for new jobs, step approvals or rejections, and dispute decisions. Tapping an alert opens that house.</li></ol></aside></div>
+</section>
+
+</main></div>
+
+<script>
+(function(){
+  var menus={
+    admin:["Dashboard","Service Orders","Contractors","Work Centers","GA Admins","Monitoring & Logs","Cancellations & Disputes","Reports"],
+    ga:["Dashboard","Work Center Mapping","Service Orders","Contractors","Monitoring & Logs","Cancellations & Disputes","Reports"],
+    con:["Service Orders","Customers / Leads","Supervisors","Activity Logs","Reports"]
+  };
+  var who={admin:["GEL Admin","Admin Panel"],ga:["Amit Trivedi","GA Admin · Ahmedabad"],con:["Shree Gas Infra","Contractor"]};
+  var urls={admin:"lmc.gujaratenergy.in/admin",ga:"lmc.gujaratenergy.in/ga",con:"lmc.gujaratenergy.in/contractor"};
+  var tabs={sup:["Leads","Disputes","Alerts","Profile"],plb:["My Jobs","Alerts","Profile"]};
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+
+  document.querySelectorAll(".web").forEach(function(w){
+    var r=w.dataset.role, inner=w.innerHTML, url=w.dataset.url||urls[r]||"";
+    var bar='<div class="wbar"><b></b><b></b><b></b><span>'+esc(url)+'</span></div>';
+    if(r==="none"){w.innerHTML=bar+inner;return;}
+    var side='<aside class="wside"><div class="brand"><i></i>LMC</div>'+menus[r].map(function(m){return '<div class="it'+(m===w.dataset.active?' on':'')+'">'+esc(m)+'</div>'}).join("")+'</aside>';
+    var wc=r==="con"?'<span class="in dd val" style="min-width:0">Ahmedabad GA · Ahmedabad</span>':'';
+    var top='<div class="wtop"><span class="ttl">'+esc(w.dataset.title||"")+'</span><div class="r">'+wc+'<span class="bell"></span><span class="av"></span><span><b style="color:var(--ink)">'+who[r][0]+'</b><br>'+who[r][1]+'</span></div></div>';
+    w.innerHTML=bar+'<div class="wapp">'+side+'<div class="wmain">'+top+inner+'</div></div>';
+  });
+
+  document.querySelectorAll(".phone").forEach(function(p){
+    var inner=p.innerHTML, d=p.dataset;
+    var head='<div class="phd">'+(d.noback?'':'<span class="bk">‹</span>')+'<span class="tt">'+esc(d.title||"")+'</span>'+(d.bell?'<span class="bell"></span>':'')+'</div>';
+    var tb=d.tabs?'<div class="ptab">'+tabs[d.tabs].map(function(t){return '<span'+(t===d.tab?' class="on"':'')+'>'+t+'</span>'}).join("")+'</div>':'';
+    p.innerHTML='<div class="pst">9:41</div>'+head+'<div class="pbd">'+inner+'</div>'+tb;
+  });
+
+  var screens=[].slice.call(document.querySelectorAll("section.screen"));
+  var nav=document.getElementById("nav"), html="", last="";
+  var dots={"Start Here":"#9aa1ad","Admin Panel (Gujarat Energy Ltd)":"#1e4fb8","GA Admin Portal":"#6a3ab8","Contractor Web Portal":"#c27a12","Mobile App · Login":"#6b7380","Mobile App · Supervisor":"#1c7a45","Mobile App · Plumber Team":"#13708a"};
+  screens.forEach(function(s,i){
+    var g=s.dataset.group;
+    if(g!==last){html+='<h5><i style="background:'+(dots[g]||"#999")+'"></i>'+esc(g)+'</h5>';last=g;}
+    html+='<a href="#'+s.id+'" data-id="'+s.id+'">'+esc(s.dataset.title)+'</a>';
+    var prev=screens[i-1], next=screens[i+1], pg='<div class="pager">';
+    if(prev) pg+='<button data-go="'+prev.id+'"><small>← Previous</small>'+esc(prev.dataset.title)+'</button>';
+    if(next) pg+='<button class="nx" data-go="'+next.id+'"><small>Next →</small>'+esc(next.dataset.group)+' · '+esc(next.dataset.title)+'</button>';
+    s.insertAdjacentHTML("beforeend",pg+'</div>');
+  });
+  nav.innerHTML=html;
+
+  function show(id){
+    var s=document.getElementById(id)||screens[0];
+    screens.forEach(function(x){x.classList.toggle("on",x===s)});
+    nav.querySelectorAll("a").forEach(function(a){a.classList.toggle("on",a.dataset.id===s.id)});
+    nav.classList.remove("open");
+    window.scrollTo(0,0);
+    if(location.hash!=="#"+s.id) history.replaceState(null,"","#"+s.id);
+  }
+  document.addEventListener("click",function(e){
+    var t=e.target.closest("[data-go],.nav a");
+    if(!t) return;
+    e.preventDefault();
+    show(t.dataset.go||t.dataset.id);
+  });
+  document.getElementById("menuBtn").addEventListener("click",function(){nav.classList.toggle("open")});
+  window.addEventListener("hashchange",function(){show(location.hash.slice(1))});
+  show(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>
